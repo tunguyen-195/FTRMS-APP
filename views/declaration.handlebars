@@ -1,0 +1,134 @@
+<div class="text-center my-4">
+  <h1 class="declaration-title">
+    <i class="fas fa-file-alt"></i>
+    {{t 'declaration.title'}}
+  </h1>
+</div>
+
+<!-- Tabs navigation -->
+<ul class='nav nav-tabs' id='declarationTabs' role='tablist'>
+  <li class='nav-item' role='presentation'>
+    <button
+      class='nav-link active'
+      id='history-tab'
+      data-bs-toggle='tab'
+      data-bs-target='#history'
+      type='button'
+      role='tab'
+      aria-controls='history'
+      aria-selected='true'
+    >{{t 'declaration.historyTab'}}</button>
+  </li>
+  <li class='nav-item' role='presentation'>
+    <button
+      class='nav-link'
+      id='new-declaration-tab'
+      data-bs-toggle='tab'
+      data-bs-target='#new-declaration'
+      type='button'
+      role='tab'
+      aria-controls='new-declaration'
+      aria-selected='false'
+    >{{t 'declaration.newDeclarationTab'}}</button>
+  </li>
+</ul>
+
+<!-- Tabs content -->
+<div class='tab-content' id='declarationTabsContent'>
+  <!-- Tab: History -->
+  <div
+    class='tab-pane fade show active'
+    id='history'
+    role='tabpanel'
+    aria-labelledby='history-tab'
+  >
+    <h2 class='mt-4'>{{t 'declaration.historyTitle'}}</h2>
+    <table class='table table-striped'>
+      <thead>
+        <tr>
+          <th>{{t 'declaration.name'}}</th>
+          <th>{{t 'declaration.accommodation'}}</th>
+          <th>{{t 'declaration.checkIn'}}</th>
+          <th>{{t 'declaration.checkOut'}}</th>
+          <th>{{t 'declaration.status'}}</th>
+        </tr>
+      </thead>
+      <tbody id='declarationTableBody'>
+        <!-- Data will be populated here -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tab: New Declaration -->
+  <div
+    class='tab-pane fade'
+    id='new-declaration'
+    role='tabpanel'
+    aria-labelledby='new-declaration-tab'
+  >
+    <h2 class='mt-4'>{{t 'declaration.newDeclarationTitle'}}</h2>
+    <form action='/declaration' method='POST'>
+      <input type="hidden" name="_csrf" value="{{csrfToken}}">
+      <div class='mb-3'>
+        <label for='full_name' class='form-label'>Họ và tên</label>
+        <input type='text' class='form-control' id='full_name' name='full_name' required />
+      </div>
+      <div class='mb-3'>
+        <label for='nationality' class='form-label'>Quốc tịch</label>
+        <input type='text' class='form-control' id='nationality' name='nationality' required />
+      </div>
+      <div class='mb-3'>
+        <label for='district' class='form-label'>Quận</label>
+        <select class='form-control' id='district' name='district' required>
+          <option value=''>Chọn quận</option>
+          <!-- Options will be populated here -->
+        </select>
+      </div>
+      <div class='mb-3'>
+        <label for='ward' class='form-label'>Phường/Xã</label>
+        <select class='form-control' id='ward' name='ward' required>
+          <option value=''>Chọn phường/xã</option>
+          <!-- Options will be populated here -->
+        </select>
+      </div>
+      <div class='mb-3'>
+        <label for='address' class='form-label'>Địa chỉ</label>
+        <input type='text' class='form-control' id='address' name='address' required />
+      </div>
+      <div class='mb-3'>
+        <label for='check_in' class='form-label'>Ngày nhận phòng</label>
+        <input type='date' class='form-control' id='check_in' name='check_in' required />
+      </div>
+      <div class='mb-3'>
+        <label for='check_out' class='form-label'>Ngày trả phòng</label>
+        <input type='date' class='form-control' id='check_out' name='check_out' required />
+      </div>
+      <div class='mb-3'>
+        <label for='reason' class='form-label'>Lý do</label>
+        <textarea class='form-control' id='reason' name='reason' rows='3' required></textarea>
+      </div>
+      <button type='submit' class='btn btn-primary'>Gửi khai báo</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal for detailed view -->
+<div class="modal fade" id="declarationDetailModal" tabindex="-1" aria-labelledby="declarationDetailModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="declarationDetailModalLabel">{{t 'declaration.detailTitle'}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="declarationDetailContent">
+        <!-- Detailed information will be populated here -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{t 'declaration.closeButton'}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Include the external script -->
+<script src="/js/declaration.js"></script>

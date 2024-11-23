@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang='{{lng}}'>
+<head>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <title>{{t 'siteTitle'}}</title>
+  <!-- Bootstrap CSS -->
+  <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet' />
+  <!-- Toastr CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <!-- Custom CSS -->
+  <link rel='stylesheet' href='/css/styles.css' />
+  <style>
+    .modal-header {
+      background-color: #343a40;
+      color: white;
+    }
+    .modal-footer {
+      background-color: #f8f9fa;
+    }
+    .modal-body ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .modal-body li {
+      padding: 8px 0;
+      border-bottom: 1px solid #e9ecef;
+    }
+    .modal-body li:last-child {
+      border-bottom: none;
+    }
+  </style>
+  <meta name="csrf-token" content="{{csrfToken}}">
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <!-- Navbar -->
+  <nav class='navbar navbar-expand-lg'>
+    <div class='container-fluid'>
+      <a class='navbar-brand d-flex align-items-center' href='/'>
+        <img src='/images/Logo.png' alt='Logo' class='me-2' style='height: 40px; width: auto;' />
+        <span class="brand-full">{{t 'navbar.brand'}}</span>
+        <span class="brand-short">{{t 'navbar.brandShort'}}</span>
+      </a>
+      <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='{{t "navbar.toggle"}}'>
+        <span class='navbar-toggler-icon'></span>
+      </button>
+      <div class='collapse navbar-collapse' id='navbarNav'>
+        <ul class='navbar-nav ms-auto'>
+          {{#if user}}
+            <li class='nav-item'>
+              <a class='nav-link' href='#' data-bs-toggle='modal' data-bs-target='#profileModal'>
+                <i class='fas fa-user'></i> {{t 'navbar.profile'}}
+              </a>
+            </li>
+            <li class='nav-item'>
+              <a class='nav-link' href='/auth/logout'>{{t 'navbar.logout'}}</a>
+            </li>
+            <li class='nav-item dropdown'>
+              <a class='nav-link dropdown-toggle' href='#' id='languageDropdown' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                {{t 'navbar.language'}}
+              </a>
+              <ul class='dropdown-menu' aria-labelledby='languageDropdown'>
+                <li><a class='dropdown-item' href='/change-lang/en'>English</a></li>
+                <li><a class='dropdown-item' href='/change-lang/vi'>Tiếng Việt</a></li>
+              </ul>
+            </li>
+          {{else}}
+            <li class='nav-item'>
+              <a class='nav-link' href='/auth/login'>{{t 'navbar.login'}}</a>
+            </li>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <div class='container mt-4 flex-grow-1'>
+    {{{body}}} <!-- Đây là nơi nội dung từ view con sẽ được chèn vào -->
+  </div>
+
+  <!-- Profile Modal -->
+  <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="profileModalLabel">Thông Tin Người Dùng</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul id="profileInfo">
+            <li><strong>Tên đăng nhập:</strong> {{user.username}}</li>
+            <li><strong>Email:</strong> {{user.email}}</li>
+            <li><strong>Số điện thoại:</strong> {{user.phone}}</li>
+            <li><strong>Tên:</strong> {{user.name}}</li>
+            <li><strong>Ngày sinh:</strong> {{formatDate user.dateOfBirth}}</li>
+            <li><strong>Quốc tịch:</strong> {{user.nationality}}</li>
+            <li><strong>Giới tính:</strong> {{user.gender}}</li>
+            {{#if user.foreignResident}}
+              <li><strong>Số hộ chiếu:</strong> {{user.foreignResident.passportNumber}}</li>
+              <li><strong>Loại visa:</strong> {{user.foreignResident.visaType}}</li>
+              <li><strong>Ngày hết hạn visa:</strong> {{formatDate user.foreignResident.visaExpiryDate}}</li>
+              <li><strong>Địa chỉ:</strong> {{user.foreignResident.address}}</li>
+            {{/if}}
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Chỉnh sửa</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Profile Modal -->
+  <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editProfileModalLabel">Chỉnh Sửa Thông Tin Người Dùng</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="modal-form" id="editProfileForm">
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <div class="mb-3">
+              <label for="passportNumber" class="form-label">Số hộ chiếu</label>
+              <input type="text" class="form-control" id="passportNumber" name="passportNumber" value="{{user.foreignResident.passportNumber}}">
+            </div>
+            <div class="mb-3">
+              <label for="visaType" class="form-label">Loại visa</label>
+              <input type="text" class="form-control" id="visaType" name="visaType" value="{{user.foreignResident.visaType}}">
+            </div>
+            <div class="mb-3">
+              <label for="visaExpiryDate" class="form-label">Ngày hết hạn visa</label>
+              <input type="date" class="form-control" id="visaExpiryDate" name="visaExpiryDate" value="{{user.foreignResident.visaExpiryDate}}">
+            </div>
+            <div class="mb-3">
+              <label for="address" class="form-label">Địa chỉ</label>
+              <input type="text" class="form-control" id="address" name="address" value="{{user.foreignResident.address}}">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+              <button type="submit" class="btn btn-success">Lưu</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer bg-dark text-white text-center py-2">
+    <div class="container">
+      <p class="mb-0">&copy; 2024 T07. All rights reserved.</p>
+      <a href="https://facebook.com" target="_blank" class="text-white me-2" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://twitter.com" target="_blank" class="text-white me-2" aria-label="Twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://instagram.com" target="_blank" class="text-white me-2" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://linkedin.com" target="_blank" class="text-white" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js'></script>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- Include the external script -->
+  <script src="/js/toggleLang.js"></script>
+  <!-- jQuery (required for Toastr) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- Toastr JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Select all forms with the class 'modal-form'
+      const modalForms = document.querySelectorAll('.modal-form');
+
+      modalForms.forEach(form => {
+        form.addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevent the default form submission
+          console.log('Modal form submitted:', form.id);
+
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData.entries());
+
+          console.log('Data to be sent:', data);
+
+          // Determine the correct endpoint based on form ID or other attributes
+          let endpoint = '/declaration/update'; // Default endpoint
+          if (form.id === 'editProfileForm') {
+            endpoint = '/declaration/update';
+          }
+          // Add more conditions if you have different endpoints for different forms
+
+          fetch(endpoint, {
+            method: 'POST', // Ensure method is POST
+            headers: {
+              'Content-Type': 'application/json',
+              'CSRF-Token': data._csrf // Include CSRF token
+            },
+            body: JSON.stringify(data)
+          })
+          .then(response => {
+            console.log(`Fetch request sent to ${endpoint}`);
+            return response.json();
+          })
+          .then(data => {
+            if (data.success) {
+              console.log('Update successful:', data);
+              alert('Thông tin đã được cập nhật thành công.');
+              const bootstrapModal = bootstrap.Modal.getInstance(form.closest('.modal'));
+              bootstrapModal.hide();
+            } else {
+              console.error('Error in update response:', data.message);
+              alert(data.message || 'Có lỗi xảy ra khi cập nhật thông tin.');
+            }
+          })
+          .catch(error => console.error('Error updating data:', error));
+        });
+      });
+    });
+
+    // Configure Toastr options
+    toastr.options = {
+      "closeButton": true,
+      "debug": false,
+      "newestOnTop": true,
+      "progressBar": true,
+      "positionClass": "toast-top-right",
+      "preventDuplicates": true,
+      "onclick": null,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": "5000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    };
+
+    // Function to show notifications
+    function showNotification(type, message, title = '') {
+      switch(type) {
+        case 'success':
+          toastr.success(message, title || 'Thành công');
+          break;
+        case 'error':
+          toastr.error(message, title || 'Lỗi');
+          break;
+        case 'warning':
+          toastr.warning(message, title || 'Cảnh báo');
+          break;
+        case 'info':
+          toastr.info(message, title || 'Thông báo');
+          break;
+        default:
+          toastr.info(message, title || 'Thông báo');
+      }
+    }
+
+    // Example usage
+    // showNotification('success', 'Đăng nhập thành công!', 'Thành công');
+    // showNotification('error', 'Đăng nhập thất bại. Vui lòng thử lại.', 'Lỗi');
+
+    // Trigger notifications based on flash messages
+    const successMessage = '{{success_msg}}';
+    const errorMessage = '{{error_msg}}';
+
+    if (successMessage) {
+      showNotification('success', successMessage);
+    }
+
+    if (errorMessage) {
+      showNotification('error', errorMessage);
+    }
+  </script>
+</body>
+</html>

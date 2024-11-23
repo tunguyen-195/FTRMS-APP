@@ -1,0 +1,135 @@
+{
+	"404": {
+		"title": "Page Not Found",
+		"message": "The page you're looking for doesn't exist."
+	},
+	"login": {
+		"title": "Login to Your Account",
+		"username": "Username",
+		"username_placeholder": "Enter your username",
+		"password": "Password",
+		"password_placeholder": "Enter your password",
+		"submit": "Login",
+		"register_link": "Don't have an account? Register",
+		"forgot_password": "Forgot your password?"
+	},
+	"dashboard": {
+		"title": "Dashboard",
+		"manageResidences": {
+			"title": "Manage Residences",
+			"description": "View and manage all foreign residents.",
+			"button": "Go to Residences"
+		},
+		"manageUsers": {
+			"title": "Manage Users",
+			"description": "Manage user accounts and access levels.",
+			"button": "Go to Users"
+		},
+		"generateReports": {
+			"title": "Generate Reports",
+			"description": "Create detailed reports for management.",
+			"button": "Generate Reports"
+		}
+	},
+	"declaration": {
+		"title": "Declaration Management",
+		"historyTab": "History",
+		"newDeclarationTab": "New Declaration",
+		"historyTitle": "Declaration History",
+		"noDeclarations": "No declarations found.",
+		"newDeclarationTitle": "New Declaration",
+		"fullNameLabel": "Full Name",
+		"nationalityLabel": "Nationality",
+		"accommodationLabel": "Accommodation",
+		"checkInLabel": "Check-in Date",
+		"checkOutLabel": "Check-out Date",
+		"reasonLabel": "Reason",
+		"dateFormat": "dd/mm/yyyy",
+		"submitButton": "Submit Declaration",
+		"name": "Name",
+		"accommodation": "Accommodation",
+		"checkIn": "Check-in Date",
+		"checkOut": "Check-out Date",
+		"status": "Status",
+		"detailTitle": "Declaration Details",
+		"closeButton": "Close"
+	},
+	"navbar": {
+		"brand": "Foreigners' Temporary Residence Management System in Hanoi",
+		"brandShort": "FTRMS",
+		"home": "Home",
+		"login": "Login",
+		"dashboard": "Dashboard",
+		"residences": "Residences",
+		"logout": "Logout",
+		"toggle": "Toggle navigation",
+		"language": "Language",
+		"profile": "Profile"
+	},
+	"siteTitle": "FTRMS Dashboard",
+	"errors": {
+		"userNotFound": "User not found",
+		"invalidPassword": "Invalid password",
+		"accessDenied": "Access denied. Admins or Managers only.",
+		"loginRequired": "Please log in to view this resource",
+		"serverError": "Something went wrong. Please try again."
+	},
+	"success": {
+		"login": "Welcome, {username}",
+		"logout": "You are logged out",
+		"registration": "You are now registered and can log in",
+		"declarationSubmitted": "Declaration submitted successfully."
+	},
+	"profile": {
+		"title": "Profile Information",
+		"username": "Username",
+		"email": "Email",
+		"phone": "Phone Number",
+		"officerId": "Officer ID",
+		"foreignDetails": {
+			"nationality": "Nationality",
+			"passportNumber": "Passport Number",
+			"visaType": "Visa Type",
+			"visaExpiryDate": "Visa Expiry Date"
+		}
+	},
+	"register": {
+		"title": "Register",
+		"username": "Username",
+		"email": "Email",
+		"phone": "Phone",
+		"password": "Password",
+		"confirmPassword": "Confirm Password",
+		"nationality": "Nationality",
+		"address": "Address",
+		"submit": "Register",
+		"alreadyHaveAccount": "Already have an account?",
+		"loginHere": "Login here"
+	},
+	"residences": {
+		"title": "Residence Management",
+		"filter": {
+			"toggle": "Toggle Filter",
+			"district": "District",
+			"ward": "Ward",
+			"submit": "Apply Filter",
+			"allDistricts": "All Districts",
+			"allWards": "All Wards"
+		},
+		"email": "Email",
+		"phone": "Phone",
+		"full_name": "Full Name",
+		"nationality": "Nationality",
+		"accommodation": "Accommodation",
+		"check_in": "Check-In Date",
+		"check_out": "Check-Out Date",
+		"reason": "Reason",
+		"declarationDate": "Declaration Date",
+		"status": "Status",
+		"statusPending": "Pending",
+		"statusApproved": "Approved",
+		"statusRejected": "Rejected",
+		"approve": "Approve",
+		"reject": "Reject"
+	}
+}

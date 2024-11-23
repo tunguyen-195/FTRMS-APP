@@ -1,0 +1,93 @@
+<div class='d-flex align-items-center justify-content-center vh-100'>
+  <div class='background-overlay'></div>
+
+  <div
+    class='card shadow-lg p-4 mb-5 bg-white rounded'
+    style='width: 400px; position: relative; z-index: 2;'
+  >
+    <div class='card-body'>
+      <div class='text-center mb-4'>
+        <img src='/images/Logo.png' alt='Logo' class='img-fluid' style='max-width: 100px;' />
+      </div>
+      <h2 class='text-center mb-4'>{{t 'login.title'}}</h2>
+
+      <!-- Hiển thị thông báo lỗi nếu có -->
+      {{#if error_msg}}
+        <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+          {{{error_msg}}}
+          <button
+            type='button'
+            class='btn-close'
+            data-bs-dismiss='alert'
+            aria-label='Close'
+          ></button>
+        </div>
+      {{/if}}
+
+      <!-- Hiển thị thông báo thành công nếu có -->
+      {{#if success_msg}}
+        <div class='alert alert-success alert-dismissible fade show' role='alert'>
+          {{{success_msg}}}
+          <button
+            type='button'
+            class='btn-close'
+            data-bs-dismiss='alert'
+            aria-label='Close'
+          ></button>
+        </div>
+      {{/if}}
+
+      <form action='/auth/login' method='POST'>
+        <input type='hidden' name='_csrf' value='{{csrfToken}}' />
+
+        <div class='mb-3'>
+          <label for='username' class='form-label'>{{t 'login.username'}}</label>
+          <input
+            type='text'
+            class='form-control'
+            id='username'
+            name='username'
+            placeholder='{{t "login.username_placeholder"}}'
+            required
+          />
+        </div>
+
+        <div class='mb-3 position-relative'>
+          <label for='password' class='form-label'>{{t 'login.password'}}</label>
+          <input
+            type='password'
+            class='form-control'
+            id='password'
+            name='password'
+            placeholder='{{t "login.password_placeholder"}}'
+            required
+          />
+        </div>
+
+        <div class='d-grid gap-2'>
+          <button type='submit' class='btn btn-primary'>{{t 'login.submit'}}</button>
+        </div>
+
+        <div class='text-center mt-3'>
+          <a href='/auth/register' class='text-muted'>{{t 'login.register_link'}}</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Tự động ẩn các thông báo sau 5 giây setTimeout(function() { let alerts =
+    document.querySelectorAll('.alert'); alerts.forEach(function(alert) { let alertInstance = new
+    bootstrap.Alert(alert); alertInstance.close(); }); }, 5000); // 5 giây
+  </script>
+
+</div>
+
+<!-- CSS -->
+<style>
+  html, body { height: 100%; margin: 0; padding: 0; } body { background:
+  url('/images/login_background.jpg') no-repeat center center fixed; background-size: cover;
+  overflow: hidden; } .background-overlay { position: fixed; top: 0; left: 0; width: 100%; height:
+  100vh; background-color: rgba(0, 0, 0, 0.5); backdrop-filter: blur(10px); z-index: 1; }
+  .card:hover { transform: scale(1.05); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
+</style>

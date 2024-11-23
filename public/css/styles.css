@@ -1,0 +1,249 @@
+.brand-full {
+  display: inline;
+}
+
+.brand-short {
+  display: none;
+}
+
+@media (max-width: 576px) {
+  .brand-full {
+    display: none;
+  }
+  .brand-short {
+    display: inline;
+  }
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 5px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer a {
+  color: #fff;
+  margin: 0 5px;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: #007bff;
+}
+
+/* Add any specific styles for the chart here */
+#residencePieChart {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+.tabs {
+  display: flex;
+  position: relative;
+}
+.tabs .line {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 6px;
+  border-radius: 15px;
+  background-color: #007bff;
+  transition: all 0.2s ease;
+}
+.tab-item {
+  min-width: 80px;
+  padding: 8px 20px 6px 20px;
+  font-size: 20px;
+  text-align: center;
+  color: #495057;
+  background-color: #f8f9fa;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: 5px solid transparent;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.tab-icon {
+  font-size: 24px;
+  width: 32px;
+  position: relative;
+  top: 2px;
+}
+.tab-item:hover {
+  opacity: 1;
+  background-color: rgba(0, 123, 255, 0.1);
+  border-color: rgba(0, 123, 255, 0.2);
+}
+.tab-item.active {
+  opacity: 1;
+  color: #fff;
+  background-color: #007bff;
+}
+.tab-content {
+  padding: 28px 0;
+}
+.tab-pane {
+  color: #333;
+  display: none;
+}
+.tab-pane.active {
+  display: block;
+}
+.tab-pane h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #343a40; /* Keep the existing black color */
+}
+
+.navbar .navbar-brand {
+  color: #fff;
+  font-weight: bold;
+}
+
+.navbar .navbar-brand:hover {
+  color: #e9ecef;
+}
+
+.navbar .nav-link {
+  color: #fff;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+  color: #007bff; /* Hover color similar to tabs */
+  background-color: rgba(255, 255, 255, 0.1); /* Light background on hover */
+}
+
+.navbar .nav-link.active {
+  color: #fff;
+  background-color: #007bff; /* Active color similar to tabs */
+}
+
+.navbar .dropdown-menu {
+  background-color: #343a40; /* Match navbar color */
+}
+
+.navbar .dropdown-item {
+  color: #fff;
+}
+
+.navbar .dropdown-item:hover {
+  background-color: #0056b3; /* Hover effect for dropdown items */
+}
+
+/* Tabs Styles */
+.nav-tabs .nav-link {
+  color: #fff;
+  background-color: #b3d7ff; /* Light blue for inactive tabs */
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-tabs .nav-link:hover {
+  background-color: #80bfff; /* Darker blue on hover */
+}
+
+.nav-tabs .nav-link.active {
+  color: #fff;
+  background-color: #007bff; /* Active tab color */
+  border-color: #007bff;
+}
+
+.nav-tabs .nav-link:not(.active) {
+  background-color: #cfe2ff; /* Lighter shade of active color for inactive tabs */
+}
+
+.tab-content {
+  padding: 28px 0;
+}
+
+.tab-pane {
+  color: #333;
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+/* Styles for the filter toggle button and panel */
+#filterPanel {
+  margin-bottom: 20px;
+}
+
+#filterPanel .form-control {
+  margin-bottom: 10px;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Center and style the residence title */
+.residence-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #007bff; /* Primary color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.residence-title::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 4px;
+  /* background-color: #007bff; */
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* Center and style the declaration title */
+.declaration-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #007bff; /* Primary color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.declaration-title i {
+  margin-right: 10px; /* Space between icon and text */
+}
+
+/* Universal Title Styles */
+h1, h2, h3, h4, h5, h6, .brand-full{
+  text-transform: uppercase;
+}

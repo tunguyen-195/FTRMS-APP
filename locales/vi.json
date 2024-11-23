@@ -1,0 +1,135 @@
+{
+  "404": {
+    "title": "Không tìm thấy trang",
+    "message": "Trang bạn tìm kiếm không tồn tại."
+  },
+  "login": {
+    "title": "Đăng nhập vào tài khoản của bạn",
+    "username": "Tên đăng nhập",
+    "username_placeholder": "Nhập tên đăng nhập của bạn",
+    "password": "Mật khẩu",
+    "password_placeholder": "Nhập mật khẩu của bạn",
+    "submit": "Đăng nhập",
+    "register_link": "Chưa có tài khoản? Đăng ký",
+    "forgot_password": "Quên mật khẩu?"
+  },
+  "dashboard": {
+    "title": "Bảng điều khiển",
+    "manageResidences": {
+      "title": "Quản lý cư trú",
+      "description": "Xem và quản lý tất cả cư dân nước ngoài.",
+      "button": "Đi đến cư trú"
+    },
+    "manageUsers": {
+      "title": "Quản lý người dùng",
+      "description": "Quản lý tài khoản người dùng và quyền truy cập.",
+      "button": "Đi đến người dùng"
+    },
+    "generateReports": {
+      "title": "Tạo báo cáo",
+      "description": "Tạo báo cáo chi tiết cho quản lý.",
+      "button": "Tạo báo cáo"
+    }
+  },
+  "declaration": {
+    "title": "Lịch sử khai báo",
+    "historyTab": "Lịch sử",
+    "newDeclarationTab": "Khai báo mới",
+    "historyTitle": "Lịch sử khai báo",
+    "noDeclarations": "Không có khai báo nào.",
+    "newDeclarationTitle": "Khai báo mới",
+    "fullNameLabel": "Họ và tên",
+    "nationalityLabel": "Quốc tịch",
+    "accommodationLabel": "Nơi cư trú",
+    "checkInLabel": "Ngày nhận phòng",
+    "checkOutLabel": "Ngày trả phòng",
+    "reasonLabel": "Lý do",
+    "dateFormat": "dd/mm/yyyy",
+    "submitButton": "Gửi khai báo",
+    "name": "Họ và tên",
+    "accommodation": "Nơi cư trú",
+    "checkIn": "Ngày nhận phòng",
+    "checkOut": "Ngày trả phòng",
+    "status": "Tình trạng",
+    "detailTitle": "Chi tiết khai báo",
+    "closeButton": "Đóng"
+  },
+  "navbar": {
+    "brand": "Hệ thống quản lý tạm trú cho người nước ngoài tại Hà Nội",
+    "brandShort": "FTRMS",
+    "home": "Trang chủ",
+    "login": "Đăng nhập",
+    "dashboard": "Bảng điều khiển",
+    "residences": "Cư trú",
+    "logout": "Đăng xuất",
+    "toggle": "Chuyển đổi điều hướng",
+    "language": "Ngôn ngữ",
+    "profile": "Thông tin cá nhân"
+  },
+  "siteTitle": "Bảng điều khiển FTRMS",
+  "errors": {
+    "userNotFound": "Không tìm thấy người dùng",
+    "invalidPassword": "Mật khẩu không hợp lệ",
+    "accessDenied": "Truy cập bị từ chối. Chỉ dành cho quản trị viên hoặc quản lý.",
+    "loginRequired": "Vui lòng đăng nhập để xem tài nguyên này",
+    "serverError": "Đã xảy ra lỗi. Vui lòng thử lại."
+  },
+  "success": {
+    "login": "Chào mừng, {username}",
+    "logout": "Bạn đã đăng xuất",
+    "registration": "Bạn đã đăng ký thành công và có thể đăng nhập",
+    "declarationSubmitted": "Khai báo đã được gửi thành công."
+  },
+  "profile": {
+    "title": "Thông tin cá nhân",
+    "username": "Tên đăng nhập",
+    "email": "Email",
+    "phone": "Số điện thoại",
+    "officerId": "Mã cán bộ",
+    "foreignDetails": {
+      "nationality": "Quốc tịch",
+      "passportNumber": "Số hộ chiếu",
+      "visaType": "Loại visa",
+      "visaExpiryDate": "Ngày hết hạn visa"
+    }
+  },
+  "register": {
+    "title": "Đăng ký",
+    "username": "Tên đăng nhập",
+    "email": "Email",
+    "phone": "Số điện thoại",
+    "password": "Mật khẩu",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "nationality": "Quốc tịch",
+    "address": "Địa chỉ",
+    "submit": "Đăng ký",
+    "alreadyHaveAccount": "Đã có tài khoản?",
+    "loginHere": "Đăng nhập tại đây"
+  },
+  "residences": {
+    "title": "Quản lý cư trú",
+    "filter": {
+      "toggle": "Bật/Tắt Bộ Lọc",
+      "district": "Quận",
+      "ward": "Phường/Xã",
+      "submit": "Áp dụng Bộ Lọc",
+      "allDistricts": "Tất cả các Quận",
+      "allWards": "Tất cả các Phường/Xã"
+    },
+    "email": "Email",
+    "phone": "Số điện thoại",
+    "full_name": "Họ và tên",
+    "nationality": "Quốc tịch",
+    "accommodation": "Nơi ở",
+    "check_in": "Ngày đến",
+    "check_out": "Ngày đi",
+    "reason": "Lý do",
+    "declarationDate": "Ngày khai báo",
+    "status": "Trạng thái",
+    "statusPending": "Đang chờ",
+    "statusApproved": "Đã duyệt",
+    "statusRejected": "Bị từ chối",
+    "approve": "Duyệt",
+    "reject": "Từ chối"
+  }
+}
