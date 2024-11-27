@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const declarationTableBody = document.getElementById('declarationTableBody');
   const declarationDetailContent = document.getElementById('declarationDetailContent');
   const declarationDetailModal = new bootstrap.Modal(document.getElementById('declarationDetailModal'));
+  const successModal = new bootstrap.Modal(document.getElementById('successModal'));
 
   let districts = []; // Store districts data globally
 
@@ -12,10 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
   async function fetchUnits() {
     try {
       const response = await fetch('/declaration/api/units');
-      console.log('Fetching units...'); // Log when fetching starts
       if (response.ok) {
-        districts = await response.json(); // Store the districts data
-        console.log('Fetched districts:', districts); // Log the fetched data
+        districts = await response.json();
         districts.forEach(district => {
           const option = document.createElement('option');
           option.value = district.Code;
@@ -33,9 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Update wards based on selected district
   districtSelect.addEventListener('change', function () {
     const selectedDistrictCode = districtSelect.value;
-    console.log('Selected district code:', selectedDistrictCode); // Log selected district code
     const selectedDistrictData = districts.find(d => d.Code === selectedDistrictCode);
-    console.log('Selected district data:', selectedDistrictData); // Log selected district data
     wardSelect.innerHTML = ''; // Clear existing options
 
     if (selectedDistrictData && selectedDistrictData.Ward) {
@@ -45,8 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
         option.textContent = ward.FullName;
         wardSelect.appendChild(option);
       });
-    } else {
-      console.warn('No wards found for selected district');
     }
   });
 
@@ -61,8 +56,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Construct the accommodation string
     const accommodation = `${address}, ${wardText}, ${districtText}`;
-
-    // Add the accommodation to the form data
     formData.set('accommodation', accommodation);
 
     const data = Object.fromEntries(formData.entries());
@@ -78,8 +71,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (response.ok) {
         const result = await response.json();
-        alert(result.message);
-        window.location.reload(); // Reload the page to update the declaration list
+        successModal.show(); // Show the success modal
+
+        // Automatically redirect after 5 seconds
+        setTimeout(() => {
+          window.location.href = '/declaration';
+        }, 5000);
+
+        // Redirect when modal is closed
+        document.getElementById('successModal').addEventListener('hidden.bs.modal', function () {
+          window.location.href = '/declaration';
+        });
       } else {
         const error = await response.json();
         alert(`Error: ${error.error}`);

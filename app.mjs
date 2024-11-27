@@ -7,13 +7,15 @@ import helmet from 'helmet'
 import csrf from 'csurf'
 import exphbs from 'express-handlebars'
 import morgan from 'morgan'
+import fs from 'fs'
+import path from 'path'
 import helpers from 'handlebars-helpers'
 import connectFlash from 'connect-flash'
 import i18n, { i18nMiddleware } from './middleware/i18n.mjs'
 import cookieParser from 'cookie-parser' // Sử dụng cookie-parser để đọc cookie
-import path from 'path'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
+import logger from './logger.js' // Import logger của winston
 
 import authRoutes from './routes/auth.mjs'
 import declarationRoutes from './routes/declaration.mjs'
@@ -35,7 +37,11 @@ const __dirname = dirname(__filename)
 dotenv.config()
 
 // Kết nối MongoDB
-connectDB()
+connectDB().then(() => {
+  logger.info('Connected to MongoDB');
+}).catch(err => {
+  logger.error('Error connecting to MongoDB:', err);
+});
 
 const app = express()
 
@@ -127,8 +133,11 @@ app.use((req, res, next) => {
   next()
 })
 
-// Log các request HTTP với Morgan
-app.use(morgan('combined'))
+// Tạo một write stream trong chế độ append
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'logs', 'access.log'), { flags: 'a' });
+
+// Sử dụng Morgan để log các request HTTP vào console và file
+app.use(morgan('combined', { stream: accessLogStream }));
 
 // Route chuyển ngôn ngữ
 app.use('/', langRoutes) // Kết nối route cho chuyển ngôn ngữ

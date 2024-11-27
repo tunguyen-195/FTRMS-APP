@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
     button.addEventListener('click', function () {
       const declarationId = this.getAttribute('data-id');
       const newStatus = this.getAttribute('data-status');
-      console.log(`Attempting to update status for declaration ID: ${declarationId} to ${newStatus}`);
       updateStatus(declarationId, newStatus);
     });
   });
@@ -64,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function () {
     button.addEventListener('click', function () {
       const declarationId = this.getAttribute('data-id');
       const newStatus = this.getAttribute('data-status');
-      console.log(`Attempting to update status for declaration ID: ${declarationId} to ${newStatus}`);
       updateStatus(declarationId, newStatus);
     });
   });
@@ -72,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function () {
   fetchUnits(); // Call the function to fetch and display units
 
   function updateStatus(declarationId, newStatus) {
-    console.log(`Sending request to update status for declaration ID: ${declarationId} to ${newStatus}`);
 
     fetch(`/residences/${declarationId}/status`, {
       method: 'PATCH',
@@ -85,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function () {
     .then(response => response.json())
     .then(data => {
       if (data.success) {
-        console.log(`Status update successful for declaration ID: ${declarationId}`);
         location.reload(); // Reload the page to reflect changes
       } else {
         console.error(`Error updating status for declaration ID: ${declarationId}`, data.message);

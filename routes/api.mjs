@@ -19,7 +19,6 @@ router.get('/residents-by-country', async (req, res) => {
       }
     ]);
 
-    console.log('Residents by Country:', residents);
     res.json(residents);
   } catch (error) {
     console.error('Error fetching residents by country:', error);

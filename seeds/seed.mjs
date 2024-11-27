@@ -7,6 +7,7 @@ import ForeignResident from '../models/ForeignResident.mjs';
 import Accommodation from '../models/Accommodation.mjs';
 import Declaration from '../models/Declaration.mjs';
 import Residence from '../models/Residence.mjs';
+import logger from '../config/logger.mjs';
 
 dotenv.config();
 connectDB();
@@ -69,10 +70,10 @@ const seedDatabase = async () => {
       { foreign_resident: foreignResidents[5]._id, accommodation: accommodations[5]._id, check_in: new Date(), reason: 'Business', managed_by: users[4].officer_id },
     ]);
 
-    console.log('Database seeded successfully');
+    logger.info('Database seeded successfully');
     process.exit();
   } catch (error) {
-    console.error('Error seeding database:', error);
+    logger.error('Error seeding database:', error);
     process.exit(1);
   }
 };

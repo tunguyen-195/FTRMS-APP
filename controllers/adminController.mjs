@@ -7,7 +7,6 @@ export const listUsers = async (req, res) => {
     const users = await User.find();
     res.render('admin/users', { users, user: res.locals.user });
   } catch (error) {
-    console.error('Error fetching users:', error);
     req.flash('error_msg', 'Error fetching users');
     res.redirect('/admin');
   }
@@ -37,7 +36,6 @@ export const addUser = async (req, res) => {
     req.flash('success_msg', 'User added successfully');
     res.redirect('/admin/users');
   } catch (error) {
-    console.error('Error adding user:', error);
     req.flash('error_msg', 'Error adding user');
     res.redirect('/admin/users');
   }
@@ -52,7 +50,6 @@ export const editUser = async (req, res) => {
     req.flash('success_msg', 'User updated successfully');
     res.redirect('/admin/users');
   } catch (error) {
-    console.error('Error updating user:', error);
     req.flash('error_msg', 'Error updating user');
     res.redirect('/admin/users');
   }
@@ -66,7 +63,6 @@ export const deleteUser = async (req, res) => {
     req.flash('success_msg', 'User deleted successfully');
     res.redirect('/admin/users');
   } catch (error) {
-    console.error('Error deleting user:', error);
     req.flash('error_msg', 'Error deleting user');
     res.redirect('/admin/users');
   }
@@ -83,7 +79,6 @@ export const viewUserDetails = async (req, res) => {
     }
     res.render('admin/userDetails', { user });
   } catch (error) {
-    console.error('Error fetching user details:', error);
     req.flash('error_msg', 'Error fetching user details');
     res.redirect('/admin/users');
   }

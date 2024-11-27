@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
   if (toggleLangCheckbox) {
     toggleLangCheckbox.addEventListener('change', function () {
       const selectedLang = this.checked ? 'vi' : 'en';
-      // console.log(`Switching language to: ${selectedLang}`);
       window.location.href = `/change-lang/${selectedLang}`;
     });
   } else {

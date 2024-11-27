@@ -5,6 +5,7 @@ import Unit from '../models/Unit.mjs';
 import ForeignResident from '../models/ForeignResident.mjs';
 import User from '../models/User.mjs';
 import mongoose from 'mongoose';
+import logger from '../logger.js';
 
 const router = express.Router();
 
@@ -26,9 +27,10 @@ router.post('/api/add', ensureAuthenticated, async (req, res) => {
     });
 
     await newDeclaration.save();
+    logger.info(`Declaration added successfully for user ${req.user._id}`);
     res.status(201).json({ message: 'Declaration added successfully', declaration: newDeclaration });
   } catch (error) {
-    console.error('Error adding declaration:', error);
+    logger.error('Error adding declaration:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
@@ -39,7 +41,7 @@ router.get('/api', ensureAuthenticated, async (req, res) => {
     const declarations = await Declaration.find({ user: req.user._id }).sort({ declarationDate: -1 });
     res.json(declarations);
   } catch (error) {
-    console.error('Error fetching declarations:', error);
+    logger.error('Error fetching declarations:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
@@ -48,11 +50,11 @@ router.get('/api', ensureAuthenticated, async (req, res) => {
 router.get('/', ensureAuthenticated, async (req, res) => {
   try {
     const userId = req.user._id;
-    // console.log('User ID:', userId);
+    logger.info(`Fetching foreign resident data for user ${userId}`);
 
     // Fetch foreign resident data
     const foreignResident = await ForeignResident.findOne({ user: userId }).lean();
-    // console.log('ForeignResident data:', foreignResident);
+    logger.info('ForeignResident data:', foreignResident);
 
     // Attach foreignResident data to user
     const userWithForeignResident = {
@@ -63,7 +65,7 @@ router.get('/', ensureAuthenticated, async (req, res) => {
     // Render the view with the combined user data
     res.render('declaration', { user: userWithForeignResident });
   } catch (error) {
-    console.error('Error fetching foreign resident data:', error);
+    logger.error('Error fetching foreign resident data:', error);
     res.status(500).send('Internal Server Error');
   }
 });
@@ -91,17 +93,17 @@ router.post('/', ensureAuthenticated, async (req, res) => {
 // Add this route to fetch districts and wards
 router.get('/api/units', ensureAuthenticated, async (req, res) => {
   try {
-    console.log('Fetching units from database...'); // Log when fetching starts
+    logger.info('Fetching units from database...'); // Log when fetching starts
     const units = await Unit.findOne({ Code: '01' }); // Assuming '01' is the code for Hà Nội
-    console.log('Fetched units:', units); // Log the fetched units
+    logger.info('Fetched units:', units); // Log the fetched units
     if (units && units.District) {
       res.json(units.District);
     } else {
-      console.error('District property is not available');
+      logger.error('District property is not available');
       res.status(500).json({ error: 'Internal Server Error' });
     }
   } catch (error) {
-    console.error('Error fetching units:', error);
+    logger.error('Error fetching units:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
@@ -120,14 +122,14 @@ router.post('/update', ensureAuthenticated, async (req, res) => {
     );
 
     if (updatedResident) {
-      console.log('Update successful:', updatedResident);
+      logger.info('Update successful:', updatedResident);
       res.json({ success: true, user: updatedResident });
     } else {
-      console.log('No matching user found for update');
+      logger.info('No matching user found for update');
       res.json({ success: false, message: 'Không tìm thấy thông tin người dùng.' });
     }
   } catch (err) {
-    console.error('Error updating user details:', err);
+    logger.error('Error updating user details:', err);
     res.json({ success: false, message: 'Có lỗi xảy ra khi cập nhật thông tin' });
   }
 });

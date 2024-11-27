@@ -19,10 +19,8 @@ router.post('/update', ensureAuthenticated, async (req, res) => {
     );
 
     if (updatedResident) {
-      console.log('Update successful:', updatedResident);
       res.json({ success: true, user: updatedResident });
     } else {
-      console.log('No matching user found for update');
       res.json({ success: false, message: 'Không tìm thấy thông tin người dùng.' });
     }
   } catch (err) {

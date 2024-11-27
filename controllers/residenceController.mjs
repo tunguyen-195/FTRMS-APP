@@ -33,12 +33,9 @@ export const updateDeclarationStatus = async (req, res) => {
   const { id } = req.params;
   const { status } = req.body;
 
-  console.log(`Received request to update status for declaration ID: ${id} to ${status}`);
-
   try {
     const declaration = await Declaration.findByIdAndUpdate(id, { status }, { new: true });
     if (declaration) {
-      console.log(`Successfully updated status for declaration ID: ${id} to ${status}`);
       res.json({ success: true, message: 'Status updated successfully', declaration });
     } else {
       console.warn(`Declaration not found for ID: ${id}`);

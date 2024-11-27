@@ -43,7 +43,6 @@ export const registerUser = async (req, res) => {
     req.flash('success_msg', 'You are now registered and can log in');
     res.redirect('/auth/login');
   } catch (err) {
-    console.error(err);
     req.flash('error_msg', 'An error occurred during registration');
     res.redirect('/register');
   }

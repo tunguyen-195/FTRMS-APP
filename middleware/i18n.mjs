@@ -18,16 +18,12 @@ i18n.configure({
   objectNotation: true // Cho phép sử dụng object notation cho các key
 });
 
-console.log('i18n configured with locales:', i18n.getLocales());
-
 // Middleware để thiết lập ngôn ngữ từ cookie
 export const i18nMiddleware = (req, res, next) => {
   i18n.init(req, res); // Khởi tạo i18n cho mỗi yêu cầu
   const currentLang = req.cookies.lang || i18n.getLocale(); // Sử dụng ngôn ngữ mặc định trên i18n nếu không có cookie
   req.setLocale(currentLang);
   res.locals.lng = currentLang;
-  // console.log(`Ngôn ngữ hiện tại từ cookie: ${currentLang}`); // Log để kiểm tra
-  // console.log(`Ngôn ngữ hiện tại từ i18n: ${req.getLocale()}`); // Log để kiểm tra
   next();
 };
 
