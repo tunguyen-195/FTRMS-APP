@@ -29,8 +29,20 @@
     .modal-body li:last-child {
       border-bottom: none;
     }
+    /* Custom styles for dashboard and reports */
+    .card-title {
+      font-weight: bold;
+    }
+    .table-hover tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+    #residencePieChart {
+      border: none; /* Remove border if not needed */
+    }
   </style>
   <meta name="csrf-token" content="{{csrfToken}}">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body class="d-flex flex-column min-vh-100">
   <!-- Navbar -->
@@ -38,7 +50,7 @@
     <div class='container-fluid'>
       <a class='navbar-brand d-flex align-items-center' href='/'>
         <img src='/images/Logo.png' alt='Logo' class='me-2' style='height: 40px; width: auto;' />
-        <span class="brand-full">{{t 'navbar.brand'}}</span>
+        <span class="brand-full"> {{t 'navbar.brand'}}</span>
         <span class="brand-short">{{t 'navbar.brandShort'}}</span>
       </a>
       <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='{{t "navbar.toggle"}}'>
@@ -64,10 +76,10 @@
                 <li><a class='dropdown-item' href='/change-lang/vi'>Tiếng Việt</a></li>
               </ul>
             </li>
-          {{else}}
+          {{!-- {{else}}
             <li class='nav-item'>
               <a class='nav-link' href='/auth/login'>{{t 'navbar.login'}}</a>
-            </li>
+            </li> --}}
           {{/if}}
         </ul>
       </div>
@@ -150,21 +162,11 @@
   </div>
 
   <!-- Footer -->
-  <footer class="footer bg-dark text-white text-center py-2">
-    <div class="container">
-      <p class="mb-0">&copy; 2024 T07. All rights reserved.</p>
-      <a href="https://facebook.com" target="_blank" class="text-white me-2" aria-label="Facebook">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="https://twitter.com" target="_blank" class="text-white me-2" aria-label="Twitter">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="https://instagram.com" target="_blank" class="text-white me-2" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://linkedin.com" target="_blank" class="text-white" aria-label="LinkedIn">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
+  <footer class="footer">
+    <div class="container text-center">
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
   </footer>
 
@@ -178,6 +180,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <!-- Toastr JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <!-- Include the external script -->
+  <script src="/js/navbar.js"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {

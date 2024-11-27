@@ -1,0 +1,53 @@
+<h1 class="text-center">{{t 'editUser.title'}}</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <form action="/admin/users/edit/{{user._id}}" method="POST">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        <div class="form-group">
+          <label for="username">{{t 'editUser.form.username'}}</label>
+          <input type="text" name="username" class="form-control" value="{{user.username}}" required>
+        </div>
+        <div class="form-group">
+          <label for="email">{{t 'editUser.form.email'}}</label>
+          <input type="email" name="email" class="form-control" value="{{user.email}}" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">{{t 'editUser.form.phone'}}</label>
+          <input type="text" name="phone" class="form-control" value="{{user.phone}}" required>
+        </div>
+        <div class="form-group">
+          <label for="name">{{t 'editUser.form.name'}}</label>
+          <input type="text" name="name" class="form-control" value="{{user.name}}" required>
+        </div>
+        <div class="form-group">
+          <label for="dateOfBirth">{{t 'editUser.form.dateOfBirth'}}</label>
+          <input type="date" name="dateOfBirth" class="form-control" value="{{user.dateOfBirth}}" required>
+        </div>
+        <div class="form-group">
+          <label for="nationality">{{t 'editUser.form.nationality'}}</label>
+          <input type="text" name="nationality" class="form-control" value="{{user.nationality}}" required>
+        </div>
+        <div class="form-group">
+          <label for="gender">{{t 'editUser.form.gender'}}</label>
+          <select name="gender" class="form-control" required>
+            <option value="Male" {{#if (eq user.gender 'Male')}}selected{{/if}}>{{t 'editUser.form.genderMale'}}</option>
+            <option value="Female" {{#if (eq user.gender 'Female')}}selected{{/if}}>{{t 'editUser.form.genderFemale'}}</option>
+            <option value="Other" {{#if (eq user.gender 'Other')}}selected{{/if}}>{{t 'editUser.form.genderOther'}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="role">{{t 'editUser.form.role'}}</label>
+          <select name="role" class="form-control">
+            <option value="user" {{#if (eq user.role 'user')}}selected{{/if}}>{{t 'editUser.form.roleUser'}}</option>
+            <option value="manager" {{#if (eq user.role 'manager')}}selected{{/if}}>{{t 'editUser.form.roleManager'}}</option>
+            <option value="admin" {{#if (eq user.role 'admin')}}selected{{/if}}>{{t 'editUser.form.roleAdmin'}}</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">{{t 'editUser.form.updateButton'}}</button>
+        <a href="/admin/users" class="btn btn-secondary">{{t 'editUser.form.cancelButton'}}</a>
+      </form>
+    </div>
+  </div>
+</div>

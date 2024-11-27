@@ -91,7 +91,9 @@ router.post('/', ensureAuthenticated, async (req, res) => {
 // Add this route to fetch districts and wards
 router.get('/api/units', ensureAuthenticated, async (req, res) => {
   try {
+    console.log('Fetching units from database...'); // Log when fetching starts
     const units = await Unit.findOne({ Code: '01' }); // Assuming '01' is the code for Hà Nội
+    console.log('Fetched units:', units); // Log the fetched units
     if (units && units.District) {
       res.json(units.District);
     } else {

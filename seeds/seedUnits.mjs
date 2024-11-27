@@ -1,58 +1,38 @@
 import mongoose from 'mongoose';
+import fs from 'fs';
+import path from 'path';
+import dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import connectDB from '../config/database.mjs';
 import Unit from '../models/Unit.mjs';
+
+dotenv.config();
+connectDB();
+
+// Use import.meta.url to get the current directory
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const seedFilePath = path.join(__dirname, 'mongo_data_vn_unit.json'); // Đường dẫn tới file JSON
 
 const seedUnits = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    // Clear existing data
+    await Unit.deleteMany();
 
-    // Clear existing units
-    await Unit.deleteMany({});
+    // Read data from the JSON file
+    const rawData = fs.readFileSync(seedFilePath, 'utf8');
+    const allProvinces = JSON.parse(rawData);
 
-    // Define districts in Hanoi with codes
-    const districts = [
-      { code: 'BD', name: 'Ba Đình' },
-      { code: 'HK', name: 'Hoàn Kiếm' },
-      { code: 'TH', name: 'Tây Hồ' },
-      { code: 'LB', name: 'Long Biên' },
-      { code: 'CG', name: 'Cầu Giấy' },
-      { code: 'DD', name: 'Đống Đa' },
-      { code: 'HBT', name: 'Hai Bà Trưng' },
-      { code: 'HM', name: 'Hoàng Mai' },
-      { code: 'TX', name: 'Thanh Xuân' },
-      { code: 'HD', name: 'Hà Đông' },
-      { code: 'NTL', name: 'Nam Từ Liêm' },
-      { code: 'BTL', name: 'Bắc Từ Liêm' },
-      { code: 'SS', name: 'Sóc Sơn' },
-      { code: 'DA', name: 'Đông Anh' },
-      { code: 'GL', name: 'Gia Lâm' },
-      { code: 'TT', name: 'Thanh Trì' },
-      { code: 'ML', name: 'Mê Linh' },
-      { code: 'ST', name: 'Sơn Tây' },
-      { code: 'BV', name: 'Ba Vì' },
-      { code: 'PT', name: 'Phúc Thọ' },
-      { code: 'DP', name: 'Đan Phượng' },
-      { code: 'HD', name: 'Hoài Đức' },
-      { code: 'QO', name: 'Quốc Oai' },
-      { code: 'TT', name: 'Thạch Thất' },
-      { code: 'CM', name: 'Chương Mỹ' },
-      { code: 'TO', name: 'Thanh Oai' },
-      { code: 'TT', name: 'Thường Tín' },
-      { code: 'PX', name: 'Phú Xuyên' },
-      { code: 'UH', name: 'Ứng Hòa' },
-      { code: 'MD', name: 'Mỹ Đức' },
-    ];
+    // Insert all provinces into the database
+    await Unit.insertMany(allProvinces);
 
-    // Seed units
-    await Unit.insertMany(districts);
-
-    console.log('Units seeded successfully');
-    mongoose.connection.close();
+    console.log('All units have been seeded successfully.');
+    process.exit();
   } catch (error) {
     console.error('Error seeding units:', error);
-    mongoose.connection.close();
+    process.exit(1);
   }
 };
 

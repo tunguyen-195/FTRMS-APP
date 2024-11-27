@@ -131,5 +131,107 @@
 		"statusRejected": "Rejected",
 		"approve": "Approve",
 		"reject": "Reject"
+	},
+	"reports": {
+		"title": "User Declarations Report",
+		"filters": {
+			"userName": "User Name",
+			"nationality": "Nationality",
+			"dateFrom": "Date From",
+			"dateTo": "Date To",
+			"accommodation": "Accommodation",
+			"status": "Status",
+			"all": "All",
+			"pending": "Pending",
+			"approved": "Approved",
+			"rejected": "Rejected",
+			"button": "Filter"
+		},
+		"summary": {
+			"totalDeclarations": "Total Declarations",
+			"ongoingStays": "Ongoing Stays",
+			"completedStays": "Completed Stays"
+		},
+		"exportButton": "Export to Excel",
+		"table": {
+			"fullName": "Full Name",
+			"email": "Email",
+			"nationality": "Nationality",
+			"accommodation": "Accommodation",
+			"checkIn": "Check-In",
+			"checkOut": "Check-Out",
+			"stayDuration": "Stay Duration (days)",
+			"status": "Status",
+			"details": "Details",
+			"viewButton": "View"
+		}
+	},
+	"userManagement": {
+		"title": "User Management",
+		"manageUsersTab": "Manage Users",
+		"addUserTab": "Add User",
+		"table": {
+			"username": "Username",
+			"email": "Email",
+			"phone": "Phone",
+			"role": "Role",
+			"actions": "Actions",
+			"detailsButton": "Details"
+		},
+		"addUserTitle": "Add User",
+		"form": {
+			"username": "Username",
+			"email": "Email",
+			"phone": "Phone",
+			"password": "Password",
+			"name": "Name",
+			"dateOfBirth": "Date of Birth",
+			"nationality": "Nationality",
+			"gender": "Gender",
+			"genderMale": "Male",
+			"genderFemale": "Female",
+			"genderOther": "Other",
+			"role": "Role",
+			"roleUser": "User",
+			"roleManager": "Manager",
+			"roleAdmin": "Admin",
+			"addButton": "Add User"
+		},
+		"confirmDelete": "Are you sure you want to delete this account? This action cannot be undone."
+	},
+	"userDetails": {
+		"title": "User Details",
+		"username": "Username",
+		"email": "Email",
+		"phone": "Phone",
+		"dateOfBirth": "Date of Birth",
+		"nationality": "Nationality",
+		"gender": "Gender",
+		"role": "Role",
+		"editButton": "Edit",
+		"deleteButton": "Delete",
+		"backButton": "Back to User List",
+		"confirmDelete": "Are you sure you want to delete this account? This action cannot be undone."
+	},
+	"editUser": {
+		"title": "Edit User",
+		"form": {
+			"username": "Username",
+			"email": "Email",
+			"phone": "Phone",
+			"name": "Name",
+			"dateOfBirth": "Date of Birth",
+			"nationality": "Nationality",
+			"gender": "Gender",
+			"genderMale": "Male",
+			"genderFemale": "Female",
+			"genderOther": "Other",
+			"role": "Role",
+			"roleUser": "User",
+			"roleManager": "Manager",
+			"roleAdmin": "Admin",
+			"updateButton": "Update User",
+			"cancelButton": "Cancel"
+		}
 	}
 }

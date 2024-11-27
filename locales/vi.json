@@ -4,7 +4,7 @@
     "message": "Trang bạn tìm kiếm không tồn tại."
   },
   "login": {
-    "title": "Đăng nhập vào tài khoản của bạn",
+    "title": "Đăng nhập",
     "username": "Tên đăng nhập",
     "username_placeholder": "Nhập tên đăng nhập của bạn",
     "password": "Mật khẩu",
@@ -131,5 +131,107 @@
     "statusRejected": "Bị từ chối",
     "approve": "Duyệt",
     "reject": "Từ chối"
+  },
+  "reports": {
+    "title": "Báo Cáo Khai Báo Người Dùng",
+    "filters": {
+      "userName": "Tên Người Dùng",
+      "nationality": "Quốc Tịch",
+      "dateFrom": "Từ Ngày",
+      "dateTo": "Đến Ngày",
+      "accommodation": "Nơi Ở",
+      "status": "Trạng Thái",
+      "all": "Tất Cả",
+      "pending": "Đang Chờ",
+      "approved": "Đã Duyệt",
+      "rejected": "Bị Từ Chối",
+      "button": "Lọc"
+    },
+    "summary": {
+      "totalDeclarations": "Tổng Số Khai Báo",
+      "ongoingStays": "Lưu Trú Đang Diễn Ra",
+      "completedStays": "Lưu Trú Đã Hoàn Thành"
+    },
+    "exportButton": "Xuất ra Excel",
+    "table": {
+      "fullName": "Họ và Tên",
+      "email": "Email",
+      "nationality": "Quốc Tịch",
+      "accommodation": "Nơi Ở",
+      "checkIn": "Ngày Đến",
+      "checkOut": "Ngày Đi",
+      "stayDuration": "Thời Gian Lưu Trú (ngày)",
+      "status": "Trạng Thái",
+      "details": "Chi Tiết",
+      "viewButton": "Xem"
+    }
+  },
+  "userManagement": {
+    "title": "Quản lý người dùng",
+    "manageUsersTab": "Quản lý người dùng",
+    "addUserTab": "Thêm người dùng",
+    "table": {
+      "username": "Tên đăng nhập",
+      "email": "Email",
+      "phone": "Số điện thoại",
+      "role": "Vai trò",
+      "actions": "Hành động",
+      "detailsButton": "Chi tiết"
+    },
+    "addUserTitle": "Thêm người dùng",
+    "form": {
+      "username": "Tên đăng nhập",
+      "email": "Email",
+      "phone": "Số điện thoại",
+      "password": "Mật khẩu",
+      "name": "Tên",
+      "dateOfBirth": "Ngày sinh",
+      "nationality": "Quốc tịch",
+      "gender": "Giới tính",
+      "genderMale": "Nam",
+      "genderFemale": "Nữ",
+      "genderOther": "Khác",
+      "role": "Vai trò",
+      "roleUser": "Người dùng",
+      "roleManager": "Quản lý",
+      "roleAdmin": "Quản trị viên",
+      "addButton": "Thêm người dùng"
+    },
+    "confirmDelete": "Bạn có chắc chắn muốn xóa tài khoản này không? Hành động này không thể hoàn tác."
+  },
+  "userDetails": {
+    "title": "Chi tiết người dùng",
+    "username": "Tên đăng nhập",
+    "email": "Email",
+    "phone": "Số điện thoại",
+    "dateOfBirth": "Ngày sinh",
+    "nationality": "Quốc tịch",
+    "gender": "Giới tính",
+    "role": "Vai trò",
+    "editButton": "Chỉnh sửa",
+    "deleteButton": "Xóa",
+    "backButton": "Quay lại danh sách người dùng",
+    "confirmDelete": "Bạn có chắc chắn muốn xóa tài khoản này không? Hành động này không thể hoàn tác."
+  },
+  "editUser": {
+    "title": "Chỉnh sửa người dùng",
+    "form": {
+      "username": "Tên đăng nhập",
+      "email": "Email",
+      "phone": "Số điện thoại",
+      "name": "Tên",
+      "dateOfBirth": "Ngày sinh",
+      "nationality": "Quốc tịch",
+      "gender": "Giới tính",
+      "genderMale": "Nam",
+      "genderFemale": "Nữ",
+      "genderOther": "Khác",
+      "role": "Vai trò",
+      "roleUser": "Người dùng",
+      "roleManager": "Quản lý",
+      "roleAdmin": "Quản trị viên",
+      "updateButton": "Cập nhật người dùng",
+      "cancelButton": "Hủy"
+    }
   }
 }

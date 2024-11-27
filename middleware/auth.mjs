@@ -10,10 +10,10 @@ export function ensureAuthenticated(req, res, next) {
 // Middleware kiểm tra người dùng có phải là admin hoặc manager không
 export function ensureAdminOrManager(req, res, next) {
   if (req.isAuthenticated() && (req.user.role === 'admin' || req.user.role === 'manager')) {
-    return next()
+    return next();
   }
-  req.flash('error_msg', 'Access denied. Admins or Managers only.')
-  res.redirect('/auth/login')
+  req.flash('error_msg', 'Access denied. Admins or Managers only.');
+  res.redirect('/auth/login');
 }
 
 // Middleware chuyển hướng nếu người dùng đã đăng nhập (không cần vào lại trang login)

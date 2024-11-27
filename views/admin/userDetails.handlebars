@@ -1,0 +1,32 @@
+<h1 class="text-center">{{t 'userDetails.title'}}</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{user.name}}</h5>
+          <p><strong>{{t 'userDetails.username'}}:</strong> {{user.username}}</p>
+          <p><strong>{{t 'userDetails.email'}}:</strong> {{user.email}}</p>
+          <p><strong>{{t 'userDetails.phone'}}:</strong> {{user.phone}}</p>
+          <p><strong>{{t 'userDetails.dateOfBirth'}}:</strong> {{user.dateOfBirth}}</p>
+          <p><strong>{{t 'userDetails.nationality'}}:</strong> {{user.nationality}}</p>
+          <p><strong>{{t 'userDetails.gender'}}:</strong> {{user.gender}}</p>
+          <p><strong>{{t 'userDetails.role'}}:</strong> {{user.role}}</p>
+          <a href="/admin/users/edit/{{user._id}}" class="btn btn-warning">{{t 'userDetails.editButton'}}</a>
+          <form action="/admin/users/delete/{{user._id}}" method="POST" style="display:inline;" onsubmit="return confirmDelete();">
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <button type="submit" class="btn btn-danger">{{t 'userDetails.deleteButton'}}</button>
+          </form>
+          <a href="/admin/users" class="btn btn-secondary">{{t 'userDetails.backButton'}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function confirmDelete() {
+    return confirm('{{t "userDetails.confirmDelete"}}');
+  }
+</script>

@@ -16,23 +16,21 @@
 }
 
 .footer {
-  background-color: #333;
+  background: linear-gradient(45deg, #333, #555);
   color: #fff;
-  padding: 5px 0;
-  position: relative;
-  bottom: 0;
-  width: 100%;
+  padding: 10px 0;
 }
 
 .footer a {
   color: #fff;
-  margin: 0 5px;
-  font-size: 16px;
-  transition: color 0.3s;
+  margin: 0 10px;
+  font-size: 18px;
+  transition: color 0.3s, transform 0.3s;
 }
 
 .footer a:hover {
   color: #007bff;
+  transform: scale(1.1);
 }
 
 /* Add any specific styles for the chart here */
@@ -112,7 +110,17 @@ body {
 
 /* Navbar Styles */
 .navbar {
-  background-color: #343a40; /* Keep the existing black color */
+  background-color: #343a40;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar.scrolled {
+  background-color: #212529;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
 .navbar .navbar-brand {
@@ -246,4 +254,50 @@ body {
 /* Universal Title Styles */
 h1, h2, h3, h4, h5, h6, .brand-full{
   text-transform: uppercase;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  border: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #0056b3, #003f7f);
+  transform: scale(1.05);
+}
+
+.modal.fade .modal-dialog {
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  transform: translateY(-50px);
+  opacity: 0;
+}
+
+.modal.show .modal-dialog {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.fas {
+  color: #007bff; /* Màu xanh dương */
+  transition: color 0.3s ease;
+}
+
+.fas:hover {
+  color: #0056b3; /* Màu xanh dương đậm hơn khi hover */
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.1); /* Màu viền nhạt hơn */
+  background-color: rgba(255, 255, 255, 0.2); /* Màu nền nhạt hơn */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar-toggler:hover {
+  background-color: rgba(255, 255, 255, 0.3); /* Màu nền khi hover */
+  border-color: rgba(255, 255, 255, 0.3); /* Màu viền khi hover */
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.7%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }

@@ -3,29 +3,18 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   try {
     const response = await fetch('/api/residents-by-country');
-    console.log('API Response Status:', response.status);
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
     const residentsData = await response.json();
-    console.log('Fetched Residents Data:', residentsData);
-
     const labels = residentsData.map(item => item._id);
     const data = residentsData.map(item => item.count);
-
-    console.log('Chart Labels:', labels);
-    console.log('Chart Data:', data);
-
-    const backgroundColors = labels.map(() => getRandomColor());
 
     const chartData = {
       labels: labels,
       datasets: [{
         label: 'Residents by Country',
         data: data,
-        backgroundColor: backgroundColors,
+        backgroundColor: labels.map(() => getRandomColor()),
         hoverOffset: 4
       }]
     };
@@ -36,13 +25,8 @@ document.addEventListener('DOMContentLoaded', async function () {
       options: {
         responsive: true,
         plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: true,
-            text: 'Residents by Country'
-          }
+          legend: { position: 'top' },
+          title: { display: true, text: 'Residents by Country' }
         }
       }
     };

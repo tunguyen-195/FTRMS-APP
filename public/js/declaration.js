@@ -12,16 +12,18 @@ document.addEventListener('DOMContentLoaded', function () {
   async function fetchUnits() {
     try {
       const response = await fetch('/declaration/api/units');
+      console.log('Fetching units...'); // Log when fetching starts
       if (response.ok) {
         districts = await response.json(); // Store the districts data
+        console.log('Fetched districts:', districts); // Log the fetched data
         districts.forEach(district => {
           const option = document.createElement('option');
           option.value = district.Code;
           option.textContent = district.FullName;
           districtSelect.appendChild(option);
-        });z
+        });
       } else {
-        console.error('Failed to fetch units');
+        console.error('Failed to fetch units, status:', response.status);
       }
     } catch (error) {
       console.error('Error fetching units:', error);
@@ -31,7 +33,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // Update wards based on selected district
   districtSelect.addEventListener('change', function () {
     const selectedDistrictCode = districtSelect.value;
+    console.log('Selected district code:', selectedDistrictCode); // Log selected district code
     const selectedDistrictData = districts.find(d => d.Code === selectedDistrictCode);
+    console.log('Selected district data:', selectedDistrictData); // Log selected district data
     wardSelect.innerHTML = ''; // Clear existing options
 
     if (selectedDistrictData && selectedDistrictData.Ward) {
@@ -41,6 +45,8 @@ document.addEventListener('DOMContentLoaded', function () {
         option.textContent = ward.FullName;
         wardSelect.appendChild(option);
       });
+    } else {
+      console.warn('No wards found for selected district');
     }
   });
 

@@ -15,11 +15,12 @@
   .card {
     border-radius: 0.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
   .card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
   
   .btn-success, .btn-danger {
@@ -45,4 +46,21 @@
   .btn-danger:hover {
     background-color: #c82333;
     border-color: #bd2130;
+  }
+  
+  /* Center the filter form */
+  #filterPanel form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  /* Ensure each form element is aligned properly */
+  #filterPanel .form-control {
+    margin-bottom: 10px;
+  }
+  
+  #filterPanel .btn-primary {
+    margin-bottom: 10px;
   }

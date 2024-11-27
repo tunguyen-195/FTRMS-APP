@@ -1,0 +1,93 @@
+<h1 class="text-center">{{t 'reports.title'}}</h1>
+
+<div class="container">
+  <form method="GET" action="/admin/reports" class="mb-4">
+    <div class="row">
+      <div class="col-md-3">
+        <label for="userName">{{t 'reports.filters.userName'}}</label>
+        <input type="text" name="userName" class="form-control" value="{{filters.userName}}">
+      </div>
+      <div class="col-md-3">
+        <label for="nationality">{{t 'reports.filters.nationality'}}</label>
+        <input type="text" name="nationality" class="form-control" value="{{filters.nationality}}">
+      </div>
+      <div class="col-md-3">
+        <label for="dateFrom">{{t 'reports.filters.dateFrom'}}</label>
+        <input type="date" name="dateFrom" class="form-control" value="{{filters.dateFrom}}">
+      </div>
+      <div class="col-md-3">
+        <label for="dateTo">{{t 'reports.filters.dateTo'}}</label>
+        <input type="date" name="dateTo" class="form-control" value="{{filters.dateTo}}">
+      </div>
+      <div class="col-md-3">
+        <label for="accommodation">{{t 'reports.filters.accommodation'}}</label>
+        <input type="text" name="accommodation" class="form-control" value="{{filters.accommodation}}">
+      </div>
+      <div class="col-md-3">
+        <label for="status">{{t 'reports.filters.status'}}</label>
+        <select name="status" class="form-control">
+          <option value="">{{t 'reports.filters.all'}}</option>
+          <option value="Pending" {{#if (eq filters.status 'Pending')}}selected{{/if}}>{{t 'reports.filters.pending'}}</option>
+          <option value="Approved" {{#if (eq filters.status 'Approved')}}selected{{/if}}>{{t 'reports.filters.approved'}}</option>
+          <option value="Rejected" {{#if (eq filters.status 'Rejected')}}selected{{/if}}>{{t 'reports.filters.rejected'}}</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">{{t 'reports.filters.button'}}</button>
+  </form>
+
+  <div class="mb-3">
+    <strong>{{t 'reports.summary.totalDeclarations'}}:</strong> {{totalDeclarations}}<br>
+    <strong>{{t 'reports.summary.ongoingStays'}}:</strong> {{totalOngoing}}<br>
+    <strong>{{t 'reports.summary.completedStays'}}:</strong> {{totalCompleted}}
+  </div>
+
+  <a href="/admin/reports/export?userName={{filters.userName}}&nationality={{filters.nationality}}&dateFrom={{filters.dateFrom}}&dateTo={{filters.dateTo}}&accommodation={{filters.accommodation}}&status={{filters.status}}" class="btn btn-success mb-3">{{t 'reports.exportButton'}}</a>
+
+  <table class="table table-striped" id="reportTable">
+    <thead>
+      <tr>
+        <th>{{t 'reports.table.fullName'}}</th>
+        <th>{{t 'reports.table.email'}}</th>
+        <th>{{t 'reports.table.nationality'}}</th>
+        <th>{{t 'reports.table.accommodation'}}</th>
+        <th>{{t 'reports.table.checkIn'}}</th>
+        <th>{{t 'reports.table.checkOut'}}</th>
+        <th>{{t 'reports.table.stayDuration'}}</th>
+        <th>{{t 'reports.table.status'}}</th>
+        <th>{{t 'reports.table.details'}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each reportData}}
+        <tr>
+          <td>{{this.userName}}</td>
+          <td>{{this.userEmail}}</td>
+          <td>{{this.nationality}}</td>
+          <td>{{this.accommodation}}</td>
+          <td>{{formatDate this.check_in}}</td>
+          <td>{{formatDate this.check_out}}</td>
+          <td>{{this.stayDuration}}</td>
+          <td>{{this.status}}</td>
+          <td><a href="/admin/declarations/{{this._id}}" class="btn btn-info">{{t 'reports.table.viewButton'}}</a></td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+<!-- Include DataTables CSS and JS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    $('#reportTable').DataTable({
+      paging: true,
+      searching: true,
+      ordering: true,
+      info: true
+    });
+  });
+</script>

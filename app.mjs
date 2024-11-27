@@ -25,6 +25,7 @@ import profileRoutes from './routes/profile.mjs';
 import registerRoutes from './routes/register.mjs';
 import apiRoutes from './routes/api.mjs'; // Import the API routes
 import residencesRoutes from './routes/residences.mjs';
+import adminRoutes from './routes/admin.mjs';
 
 // Tính toán __dirname cho ES Modules
 const __filename = fileURLToPath(import.meta.url)
@@ -166,6 +167,9 @@ app.use('/api', apiRoutes);
 // Routes for residence management
 app.use('/residences', residencesRoutes);
 
+// Use the admin routes
+app.use('/admin', adminRoutes);
+
 // Xử lý trang 404 (không tìm thấy route)
 app.use((req, res) => {
   res.status(404).render('404', { title: 'Page Not Found' })
@@ -183,6 +187,13 @@ app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`)
 
 app.use((req, res, next) => {
   res.setHeader("Content-Security-Policy", "script-src 'self' https://cdn.jsdelivr.net");
+  next();
+});
+
+app.use((req, res, next) => {
+  if (req.isAuthenticated()) {
+    res.locals.user = req.user;
+  }
   next();
 });
 
