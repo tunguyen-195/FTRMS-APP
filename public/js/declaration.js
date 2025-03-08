@@ -97,19 +97,19 @@ document.addEventListener('DOMContentLoaded', function () {
     try {
       const response = await fetch('/declaration/api');
       if (response.ok) {
-        const declarations = await response.json();
+        const residences = await response.json(); // Fetch residences instead of declarations
         declarationTableBody.innerHTML = ''; // Clear existing data
 
-        declarations.forEach(declaration => {
+        residences.forEach(residence => {
           const row = document.createElement('tr');
           row.innerHTML = `
-            <td>${declaration.full_name}</td>
-            <td>${declaration.accommodation}</td>
-            <td>${new Date(declaration.check_in).toLocaleDateString()}</td>
-            <td>${declaration.check_out ? new Date(declaration.check_out).toLocaleDateString() : 'N/A'}</td>
-            <td>${declaration.status}</td>
+            <td>${residence.foreignResident.fullName}</td>
+            <td>${residence.accommodation.name}</td>
+            <td>${new Date(residence.check_in).toLocaleDateString()}</td>
+            <td>${residence.check_out ? new Date(residence.check_out).toLocaleDateString() : 'N/A'}</td>
+            <td>${residence.status}</td>
           `;
-          row.addEventListener('click', () => showDeclarationDetails(declaration));
+          row.addEventListener('click', () => showDeclarationDetails(residence));
           declarationTableBody.appendChild(row);
         });
       } else {
@@ -121,15 +121,15 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Show declaration details in a modal
-  function showDeclarationDetails(declaration) {
+  function showDeclarationDetails(residence) {
     declarationDetailContent.innerHTML = `
-      <p><strong>Họ và tên:</strong> ${declaration.full_name}</p>
-      <p><strong>Quốc tịch:</strong> ${declaration.nationality}</p>
-      <p><strong>Nơi cư trú:</strong> ${declaration.accommodation}</p>
-      <p><strong>Ngày nhận phòng:</strong> ${new Date(declaration.check_in).toLocaleDateString()}</p>
-      <p><strong>Ngày trả phòng:</strong> ${declaration.check_out ? new Date(declaration.check_out).toLocaleDateString() : 'N/A'}</p>
-      <p><strong>Lý do:</strong> ${declaration.reason}</p>
-      <p><strong>Tình trạng:</strong> ${declaration.status}</p>
+      <p><strong>Họ và tên:</strong> ${residence.foreignResident.fullName}</p>
+      <p><strong>Quốc tịch:</strong> ${residence.foreignResident.nationality}</p>
+      <p><strong>Nơi cư trú:</strong> ${residence.accommodation.name}</p>
+      <p><strong>Ngày nhận phòng:</strong> ${new Date(residence.check_in).toLocaleDateString()}</p>
+      <p><strong>Ngày trả phòng:</strong> ${residence.check_out ? new Date(residence.check_out).toLocaleDateString() : 'N/A'}</p>
+      <p><strong>Lý do:</strong> ${residence.reason}</p>
+      <p><strong>Tình trạng:</strong> ${residence.status}</p>
     `;
     declarationDetailModal.show();
   }

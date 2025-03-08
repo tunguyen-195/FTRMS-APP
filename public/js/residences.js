@@ -15,24 +15,24 @@ document.addEventListener('DOMContentLoaded', function () {
   let districts = []; // Store districts data globally
 
   // Fetch districts and populate the district dropdown
-  async function fetchUnits() {
-    try {
-      const response = await fetch('/declaration/api/units');
-      if (response.ok) {
-        districts = await response.json(); // Store the districts data
-        districts.forEach(district => {
-          const option = document.createElement('option');
-          option.value = district.Code;
-          option.textContent = district.FullName;
-          districtSelect.appendChild(option);
-        });
-      } else {
-        console.error('Failed to fetch units');
-      }
-    } catch (error) {
-      console.error('Error fetching units:', error);
-    }
-  }
+  // async function fetchUnits() {
+  //   try {
+  //     const response = await fetch('/declaration/api/units');
+  //     if (response.ok) {
+  //       districts = await response.json(); // Store the districts data
+  //       districts.forEach(district => {
+  //         const option = document.createElement('option');
+  //         option.value = district.Code;
+  //         option.textContent = district.FullName;
+  //         districtSelect.appendChild(option);
+  //       });
+  //     } else {
+  //       console.error('Failed to fetch units');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error fetching units:', error);
+  //   }
+  // }
 
   // Update wards based on selected district
   districtSelect.addEventListener('change', function () {
@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
     .then(response => response.json())
     .then(data => {
       if (data.success) {
+        console.log(data)
         location.reload(); // Reload the page to reflect changes
       } else {
         console.error(`Error updating status for declaration ID: ${declarationId}`, data.message);

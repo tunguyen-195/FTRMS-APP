@@ -1,0 +1,54 @@
+<h1>Manage Accommodations</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Representative</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each accommodations}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.type}}</td>
+        <td>{{this.address}}</td>
+        <td>{{this.phone}}</td>
+        <td>{{this.representative.name}}</td>
+        <td>
+          <button class="btn btn-primary" onclick="editAccommodation('{{this._id}}')">Edit</button>
+          <button class="btn btn-danger" onclick="deleteAccommodation('{{this._id}}')">Delete</button>
+        </td>
+      </tr>
+    {{else}}
+      <tr>
+        <td colspan="6">No accommodations available</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<script>
+  function editAccommodation(id) {
+    window.location.href = `/accommodations/edit/${id}`;
+  }
+
+  function deleteAccommodation(id) {
+    if (confirm('Are you sure you want to delete this accommodation?')) {
+      fetch(`/accommodations/delete/${id}`, { method: 'DELETE' })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            alert('Successfully deleted');
+            location.reload();
+          } else {
+            alert('Failed to delete');
+          }
+        });
+    }
+  }
+</script> 

@@ -20,10 +20,24 @@ const foreignResidentSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  user: {
+  accommodation: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: 'Accommodation',
     required: true,
+  },
+  fullName: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  dateOfBirth: {
+    type: Date,
+    required: true,
+  },
+  nationality: {
+    type: String,
+    required: true,
+    trim: true,
   },
 }, {
   timestamps: true,

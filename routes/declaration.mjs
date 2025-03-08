@@ -6,19 +6,29 @@ import ForeignResident from '../models/ForeignResident.mjs';
 import User from '../models/User.mjs';
 import mongoose from 'mongoose';
 import logger from '../logger.js';
+import Accommodation from '../models/Accommodation.mjs';
+import { createDeclaration, getDeclarations } from '../controllers/declarationController.mjs';
 
 const router = express.Router();
 
 // API to add a new declaration
 router.post('/api/add', ensureAuthenticated, async (req, res) => {
-  const { full_name, nationality, accommodation, check_in, check_out, reason } = req.body;
+  const { full_name, nationality, check_in, check_out, reason } = req.body;
 
   try {
+    // Fetch the accommodation associated with the logged-in user
+    const accommodation = await Accommodation.findOne({ representative: req.user._id });
+
+    if (!accommodation) {
+      logger.error('No accommodation found for the user.');
+      return res.status(400).json({ error: 'No accommodation found for your account.' });
+    }
+
     const newDeclaration = new Declaration({
       user: req.user._id,
       full_name,
       nationality,
-      accommodation,
+      accommodation: accommodation._id, // Use the accommodation's ObjectId
       check_in,
       check_out,
       reason,
@@ -36,59 +46,13 @@ router.post('/api/add', ensureAuthenticated, async (req, res) => {
 });
 
 // API to get declarations for the authenticated user
-router.get('/api', ensureAuthenticated, async (req, res) => {
-  try {
-    const declarations = await Declaration.find({ user: req.user._id }).sort({ declarationDate: -1 });
-    res.json(declarations);
-  } catch (error) {
-    logger.error('Error fetching declarations:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
+router.get('/api', ensureAuthenticated, getDeclarations);
 
 // Route to display the declaration page
-router.get('/', ensureAuthenticated, async (req, res) => {
-  try {
-    const userId = req.user._id;
-    logger.info(`Fetching foreign resident data for user ${userId}`);
+router.get('/', ensureAuthenticated, getDeclarations);
 
-    // Fetch foreign resident data
-    const foreignResident = await ForeignResident.findOne({ user: userId }).lean();
-    logger.info('ForeignResident data:', foreignResident);
-
-    // Attach foreignResident data to user
-    const userWithForeignResident = {
-      ...req.user.toObject(), // Convert Mongoose document to plain object
-      foreignResident,
-    };
-
-    // Render the view with the combined user data
-    res.render('declaration', { user: userWithForeignResident });
-  } catch (error) {
-    logger.error('Error fetching foreign resident data:', error);
-    res.status(500).send('Internal Server Error');
-  }
-});
-
-// Handle new declaration form submission
-router.post('/', ensureAuthenticated, async (req, res) => {
-  const { full_name, nationality, accommodation, check_in, check_out, reason } = req.body;
-
-  const newDeclaration = new Declaration({
-    user: req.user._id,
-    full_name,
-    nationality,
-    accommodation,
-    check_in,
-    check_out,
-    reason,
-    declarationDate: new Date(),
-    status: 'Pending',
-  });
-
-  await newDeclaration.save();
-  res.redirect('/declaration?tab=new');
-});
+// Route to handle new declaration form submission
+router.post('/', ensureAuthenticated, createDeclaration);
 
 // Add this route to fetch districts and wards
 router.get('/api/units', ensureAuthenticated, async (req, res) => {

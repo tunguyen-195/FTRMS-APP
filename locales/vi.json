@@ -29,6 +29,11 @@
       "title": "Tạo báo cáo",
       "description": "Tạo báo cáo chi tiết cho quản lý.",
       "button": "Tạo báo cáo"
+    },
+    "manageAccommodations": {
+      "title": "Quản Lý Cơ Sở Tạm Trú",
+      "description": "Xem và quản lý tất cả các cơ sở tạm trú.",
+      "button": "Quản Lý"
     }
   },
   "declaration": {

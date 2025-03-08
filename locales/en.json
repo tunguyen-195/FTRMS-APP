@@ -29,6 +29,11 @@
 			"title": "Generate Reports",
 			"description": "Create detailed reports for management.",
 			"button": "Generate Reports"
+		},
+		"manageAccommodations": {
+			"title": "Manage Accommodations",
+			"description": "View and manage all accommodations.",
+			"button": "Manage"
 		}
 	},
 	"declaration": {

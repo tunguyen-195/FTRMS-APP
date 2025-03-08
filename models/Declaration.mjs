@@ -7,18 +7,14 @@ const declarationSchema = new mongoose.Schema({
     required: true,
     index: true,
   },
-  full_name: {
-    type: String,
+  foreignResident: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'ForeignResident',
     required: true,
-    trim: true,
-  },
-  nationality: {
-    type: String,
-    required: true,
-    trim: true,
   },
   accommodation: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Accommodation',
     required: true,
   },
   check_in: {

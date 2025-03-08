@@ -3,6 +3,7 @@ import { ensureAdminOrManager } from '../middleware/auth.mjs';
 import { listUsers, addUser, editUser, deleteUser, viewUserDetails } from '../controllers/adminController.mjs';
 import User from '../models/User.mjs';
 import { generateReport, exportReport } from '../controllers/reportController.mjs';
+import Residence from '../models/Residence.mjs';
 
 const router = express.Router();
 

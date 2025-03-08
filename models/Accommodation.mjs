@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const accommodationSchema = new mongoose.Schema({
   name: {
@@ -21,15 +21,10 @@ const accommodationSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  managing_unit: {
-    type: String,
-    required: true,
-    trim: true,
-  },
   representative: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
     required: true,
-    trim: true,
   },
   createdAt: {
     type: Date,
@@ -39,6 +34,6 @@ const accommodationSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-})
+});
 
-export default mongoose.model('Accommodation', accommodationSchema)
+export default mongoose.model('Accommodation', accommodationSchema);

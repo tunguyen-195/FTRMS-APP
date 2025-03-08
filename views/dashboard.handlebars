@@ -33,6 +33,17 @@
       </div>
     </div>
     {{/if}}
+    {{#if (eq user.role 'manager')}}
+    <div class='col-md-4 mb-4'>
+      <div class='card shadow-sm'>
+        <div class='card-body'>
+          <h5 class='card-title'><i class="fas fa-hotel"></i> {{t 'dashboard.manageAccommodations.title'}}</h5>
+          <p class='card-text'>{{t 'dashboard.manageAccommodations.description'}}</p>
+          <a href='/accommodations/manage' class='btn btn-info'>{{t 'dashboard.manageAccommodations.button'}}</a>
+        </div>
+      </div>
+    </div>
+    {{/if}}
   </div>
 </div>
 

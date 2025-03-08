@@ -2,49 +2,41 @@ import Declaration from '../models/Declaration.mjs';
 import User from '../models/User.mjs';
 import { Parser } from 'json2csv';
 import ExcelJS from 'exceljs';
+import Residence from '../models/Residence.mjs';
+import logger from '../config/logger.mjs';
 
 export const generateReport = async (req, res) => {
   try {
     const filters = {};
     if (req.query.nationality) {
-      filters.nationality = req.query.nationality;
+      filters['foreignResident.nationality'] = req.query.nationality;
     }
     if (req.query.dateFrom && req.query.dateTo) {
       filters.check_in = { $gte: new Date(req.query.dateFrom), $lte: new Date(req.query.dateTo) };
     }
-    if (req.query.accommodation) {
-      filters.accommodation = req.query.accommodation;
-    }
     if (req.query.status) {
       filters.status = req.query.status;
     }
-    if (req.query.userName) {
-      filters['user.name'] = { $regex: req.query.userName, $options: 'i' }; // Case-insensitive search
-    }
 
-    const declarations = await Declaration.find(filters).populate('user');
+    const residences = await Residence.find(filters)
+      .populate('foreignResident')
+      .populate('accommodation');
 
-    const reportData = declarations.map(declaration => {
-      const stayDuration = declaration.check_out
-        ? Math.ceil((new Date(declaration.check_out) - new Date(declaration.check_in)) / (1000 * 60 * 60 * 24))
-        : 'Ongoing';
+    const reportData = residences.map(residence => ({
+      fullName: residence.foreignResident.fullName,
+      nationality: residence.foreignResident.nationality,
+      accommodation: residence.accommodation.name,
+      checkIn: residence.check_in,
+      checkOut: residence.check_out,
+      stayDuration: residence.check_out
+        ? Math.ceil((new Date(residence.check_out) - new Date(residence.check_in)) / (1000 * 60 * 60 * 24))
+        : 'Ongoing',
+      status: residence.status,
+    }));
 
-      return {
-        ...declaration._doc,
-        stayDuration,
-        userName: declaration.user.name,
-        userEmail: declaration.user.email,
-      };
-    });
-
-    // Aggregate data for summary
-    const totalDeclarations = reportData.length;
-    const totalOngoing = reportData.filter(d => d.stayDuration === 'Ongoing').length;
-    const totalCompleted = totalDeclarations - totalOngoing;
-
-    res.render('admin/reports', { reportData, filters, totalDeclarations, totalOngoing, totalCompleted });
+    res.render('admin/reports', { reportData });
   } catch (error) {
-    console.error('Error generating report:', error);
+    logger.error('Error generating report:', error);
     req.flash('error_msg', 'Error generating report');
     res.redirect('/admin');
   }
@@ -53,35 +45,37 @@ export const generateReport = async (req, res) => {
 export const exportReport = async (req, res) => {
   try {
     const filters = {};
+    
+    // Check if nationality is provided in the query
     if (req.query.nationality) {
-      filters.nationality = req.query.nationality;
+      filters.nationality = req.query.nationality; // Ensure this matches the model structure
     }
     if (req.query.dateFrom && req.query.dateTo) {
       filters.check_in = { $gte: new Date(req.query.dateFrom), $lte: new Date(req.query.dateTo) };
     }
-    if (req.query.accommodation) {
-      filters.accommodation = req.query.accommodation;
-    }
     if (req.query.status) {
       filters.status = req.query.status;
     }
-    if (req.query.userName) {
-      filters['user.name'] = { $regex: req.query.userName, $options: 'i' }; // Case-insensitive search
-    }
 
-    const declarations = await Declaration.find(filters).populate('user');
+    console.log('Filters applied:', filters); // Log the filters
 
-    const reportData = declarations.map(declaration => ({
-      fullName: declaration.full_name,
-      email: declaration.user.email,
-      nationality: declaration.nationality,
-      accommodation: declaration.accommodation,
-      checkIn: declaration.check_in,
-      checkOut: declaration.check_out,
-      stayDuration: declaration.check_out
-        ? Math.ceil((new Date(declaration.check_out) - new Date(declaration.check_in)) / (1000 * 60 * 60 * 24))
+    // Fetch residences based on the filters
+    const residences = await Residence.find(filters)
+      .populate('foreignResident')
+      .populate('accommodation');
+
+    console.log('Residences found:', residences); // Log the results
+
+    const reportData = residences.map(residence => ({
+      fullName: residence.foreignResident.fullName,
+      nationality: residence.foreignResident.nationality, // This assumes you still want to show the nationality from ForeignResident
+      accommodation: residence.accommodation.name,
+      checkIn: residence.check_in,
+      checkOut: residence.check_out,
+      stayDuration: residence.check_out
+        ? Math.ceil((new Date(residence.check_out) - new Date(residence.check_in)) / (1000 * 60 * 60 * 24))
         : 'Ongoing',
-      status: declaration.status,
+      status: residence.status,
     }));
 
     // Create a new workbook and worksheet
@@ -91,8 +85,7 @@ export const exportReport = async (req, res) => {
     // Add columns to the worksheet
     worksheet.columns = [
       { header: 'Full Name', key: 'fullName', width: 20 },
-      { header: 'Email', key: 'email', width: 25 },
-      { header: 'Nationality', key: 'nationality', width: 15 },
+      { header: 'Nationality', key: 'nationality', width: 25 },
       { header: 'Accommodation', key: 'accommodation', width: 20 },
       { header: 'Check-In', key: 'checkIn', width: 15 },
       { header: 'Check-Out', key: 'checkOut', width: 15 },

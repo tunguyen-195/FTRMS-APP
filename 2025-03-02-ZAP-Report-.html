@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZAP Scanning Report</title>
+<link
+	href="2025-03-02-ZAP-Report-/normalize/normalize.css" rel="stylesheet">
+<link
+	href="2025-03-02-ZAP-Report-/themes/original/main.css" rel="stylesheet">
+<link
+	href="2025-03-02-ZAP-Report-/themes/original/colors.css" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<h1>ZAP Scanning Report</h1>
+		<p>
+			<span>Generated with</span> <a href="https://zaproxy.org"><img
+				src="2025-03-02-ZAP-Report-/zap32x32.png" alt="The ZAP logo" class="zap-logo">ZAP</a>
+			<span>on Sun 2 Mar 2025, at 23:27:35</span>
+		</p>
+		<p>ZAP Version: 2.13.0</p>
+		<p>
+			ZAP is supported by the <a href="https://crashoverride.com/?zap=rep">Crash Override Open Source Fellowship</a>
+		</p>
+	</header>
+
+	<main>
+
+		<section id="contents" class="contents">
+			<h2>Contents</h2>
+			<nav>
+				<ol>
+					<li><a
+						href="#about-this-report">About this report</a>
+						<ol>
+							
+							<li><a
+								href="#report-parameters">Report parameters</a></li>
+						</ol></li>
+					<data-th-block>
+					<li><a
+						href="#summaries">Summaries</a>
+						<ol>
+							<li><a
+								href="#risk-confidence-counts">Alert counts by risk and confidence</a></li>
+							<li><a
+								href="#site-risk-counts">Alert counts by site and risk</a></li>
+							<li><a
+								href="#alert-type-counts">Alert counts by alert type</a></li>
+						</ol></li>
+					<li><a
+						href="#alerts">Alerts</a>
+						<ol>
+							
+							 
+							
+							
+							
+							
+							<li><a
+								href="#alerts--risk-2-confidence-3"><span>Risk</span>=<span
+									class="risk-level">Medium</span>, <span>Confidence</span>=<span
+									class="confidence-level">High</span> <span>(2)</span></a></li>
+							
+							
+							
+							
+							  
+							
+							
+							
+							
+							
+							
+							<li><a
+								href="#alerts--risk-1-confidence-2"><span>Risk</span>=<span
+									class="risk-level">Low</span>, <span>Confidence</span>=<span
+									class="confidence-level">Medium</span> <span>(3)</span></a></li>
+							
+							
+							  
+							
+							
+							
+							
+							<li><a
+								href="#alerts--risk-0-confidence-3"><span>Risk</span>=<span
+									class="risk-level">Informational</span>, <span>Confidence</span>=<span
+									class="confidence-level">High</span> <span>(1)</span></a></li>
+							
+							<li><a
+								href="#alerts--risk-0-confidence-2"><span>Risk</span>=<span
+									class="risk-level">Informational</span>, <span>Confidence</span>=<span
+									class="confidence-level">Medium</span> <span>(4)</span></a></li>
+							
+							<li><a
+								href="#alerts--risk-0-confidence-1"><span>Risk</span>=<span
+									class="risk-level">Informational</span>, <span>Confidence</span>=<span
+									class="confidence-level">Low</span> <span>(2)</span></a></li>
+							  
+						</ol></li>
+					<li><a
+						href="#appendix">Appendix</a>
+						<ol>
+							<li><a
+								href="#alert-types">Alert types</a></li>
+						</ol></li>
+					</data-th-block>
+				</ol>
+			</nav>
+		</section>
+
+		<section
+			id="about-this-report" class="about-this-report">
+			<h2>About this report</h2>
+
+			
+
+			<section
+				id="report-parameters">
+				<h3>Report parameters</h3>
+				<div class="report-parameters--container">
+					<h4>Contexts</h4>
+					
+					
+					<p>No contexts were selected, so all contexts were included by default.</p>
+					  
+
+					<h4>Sites</h4>
+					
+					<p>The following sites were included:</p>
+					<ul class="sites-list">
+						<li><span class="site">http://localhost:3000</span></li>
+					</ul>
+					
+					<p>(If no sites were selected, all sites were included by default.)</p>
+					<p>An included site must also be within one of the included contexts for its data to be included in the report.</p>
+
+					<h4>Risk levels</h4>
+					<p>
+						<span>Included</span>:
+						 
+						<span class="included-risk-codes"><span class="risk-level">High</span>, <span class="risk-level">Medium</span>, <span class="risk-level">Low</span>, <span class="risk-level">Informational</span></span>
+					</p>
+					<p>
+						<span>Excluded</span>:
+						 <span>None</span>
+						
+					</p>
+
+					<h4>Confidence levels</h4>
+					<p>
+						<span>Included</span>:
+						
+						
+						<span class="included-confidence-codes"><span class="confidence-level">User Confirmed</span>, <span class="confidence-level">High</span>, <span class="confidence-level">Medium</span>, <span class="confidence-level">Low</span></span>
+					</p>
+					<p>
+						<span>Excluded</span>:
+						
+						
+						<span class="included-confidence-codes"> <span class="confidence-level">User Confirmed</span>, <span class="confidence-level">High</span>, <span class="confidence-level">Medium</span>, <span class="confidence-level">Low</span>, <span class="confidence-level">False Positive</span></span>
+					</p>
+				</div>
+			</section>
+		</section>
+
+		
+		<section>
+			
+		</section>
+		
+		<section id="summaries" class="summaries">
+			<h2>Summaries</h2>
+
+			<section
+				id="risk-confidence-counts">
+				<h3>Alert counts by risk and confidence</h3>
+				<table class="risk-confidence-counts-table">
+					<caption>
+						<p>This table shows the number of alerts for each level of risk and confidence included in the report.</p>
+						<p>(The percentages in brackets represent the count as a percentage of the total number of alerts included in the report, rounded to one decimal place.)</p>
+					</caption>
+					<colgroup>
+						<col>
+						<col>
+					</colgroup>
+					<colgroup>
+						<col
+							style="width: 14.0%"><col
+							style="width: 14.0%"><col
+							style="width: 14.0%"><col
+							style="width: 14.0%">
+						<col style="width: 14.0%">
+					</colgroup>
+					<thead>
+						<tr>
+							<td colspan="2" rowspan="2"></td>
+							<th scope="colgroup"
+								colspan="5">Confidence</th>
+						</tr>
+						<tr>
+							<th scope="col">User Confirmed</th>
+							<th scope="col">High</th>
+							<th scope="col">Medium</th>
+							<th scope="col">Low</th>
+							<th scope="col">Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="rowgroup"
+								rowspan="5">Risk</th>
+							<th scope="row">High</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0.0%)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0.0%)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0.0%)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0.0%)</span></td>
+							<td><span>0</span><br> <span class="additional-info-percentages">(0.0%)</span></td>
+						</tr>
+						<tr>
+							
+							<th scope="row">Medium</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0.0%)</span></td>
+							<td><span>2</span><br> <span
+								class="additional-info-percentages">(16.7%)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0.0%)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0.0%)</span></td>
+							<td><span>2</span><br> <span class="additional-info-percentages">(16.7%)</span></td>
+						</tr>
+						<tr>
+							
+							<th scope="row">Low</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0.0%)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0.0%)</span></td>
+							<td><span>3</span><br> <span
+								class="additional-info-percentages">(25.0%)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0.0%)</span></td>
+							<td><span>3</span><br> <span class="additional-info-percentages">(25.0%)</span></td>
+						</tr>
+						<tr>
+							
+							<th scope="row">Informational</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0.0%)</span></td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(8.3%)</span></td>
+							<td><span>4</span><br> <span
+								class="additional-info-percentages">(33.3%)</span></td>
+							<td><span>2</span><br> <span
+								class="additional-info-percentages">(16.7%)</span></td>
+							<td><span>7</span><br> <span class="additional-info-percentages">(58.3%)</span></td>
+						</tr>
+						<tr>
+							<th scope="row">Total</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0.0%)</span></td>
+							<td><span>3</span><br> <span
+								class="additional-info-percentages">(25.0%)</span></td>
+							<td><span>7</span><br> <span
+								class="additional-info-percentages">(58.3%)</span></td>
+							<td><span>2</span><br> <span
+								class="additional-info-percentages">(16.7%)</span></td>
+							<td><span>12</span><br> <span
+								class="additional-info-percentages">(100%)</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section
+				id="site-risk-counts">
+				<h3>Alert counts by site and risk</h3>
+				<table class="site-risk-counts-table">
+					<caption>
+						<p>This table shows, for each site for which one or more alerts were raised, the number of alerts raised at each risk level.</p>
+						<p>Alerts with a confidence level of &quot;False Positive&quot; have been excluded from these counts.</p>
+						<p>(The numbers in brackets are the number of alerts raised for the site at or above that risk level.)</p>
+					</caption>
+					<colgroup>
+						<col>
+						<col>
+					</colgroup>
+					<colgroup>
+						<col
+							style="width: 16.25%"><col
+							style="width: 16.25%"><col
+							style="width: 16.25%"><col
+							style="width: 16.25%">
+					</colgroup>
+					<thead>
+						<tr>
+							<td colspan="2" rowspan="2"></td>
+							<th scope="colgroup" colspan="4">Risk</th>
+						</tr>
+						<tr>
+							<th scope="col">
+								<span>High</span><br>  <span
+									class="additional-info-percentages">(= High)</span>  
+							</th>
+							<th scope="col">
+								<span>Medium</span><br>   <span
+									class="additional-info-percentages">(&gt;= Medium)</span> 
+							</th>
+							<th scope="col">
+								<span>Low</span><br>   <span
+									class="additional-info-percentages">(&gt;= Low)</span> 
+							</th>
+							<th scope="col">
+								<span>Informational</span><br>   <span
+									class="additional-info-percentages">(&gt;= Informational)</span> 
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="rowgroup"
+								rowspan="1">Site</th>
+							<th scope="row">http://localhost:3000</th>
+							
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0)</span></td>
+							<td><span>2</span><br> <span
+								class="additional-info-percentages">(2)</span></td>
+							<td><span>2</span><br> <span
+								class="additional-info-percentages">(4)</span></td>
+							
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section
+				id="alert-type-counts">
+				<h3>Alert counts by alert type</h3>
+				<table class="alert-type-counts-table">
+					<caption>
+						<p>This table shows the number of alerts of each alert type, together with the alert type&#39;s risk level.</p>
+						<p>(The percentages in brackets represent each count as a percentage, rounded to one decimal place, of the total number of alerts included in this report.)</p>
+					</caption>
+					<thead>
+						<tr>
+							<th scope="col">Alert type</th>
+							<th scope="col">Risk</th>
+							<th scope="col">Count</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-0">CSP: Wildcard Directive</a></th>
+							<td class="risk-level">Medium</td>
+							<td><span>16</span><br> <span
+								class="additional-info-percentages">(133.3%)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-1">CSP: style-src unsafe-inline</a></th>
+							<td class="risk-level">Medium</td>
+							<td><span>16</span><br> <span
+								class="additional-info-percentages">(133.3%)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-2">Cookie No HttpOnly Flag</a></th>
+							<td class="risk-level">Low</td>
+							<td><span>4</span><br> <span
+								class="additional-info-percentages">(33.3%)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-3">Cookie without SameSite Attribute</a></th>
+							<td class="risk-level">Low</td>
+							<td><span>9</span><br> <span
+								class="additional-info-percentages">(75.0%)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-4">Cross-Domain JavaScript Source File Inclusion</a></th>
+							<td class="risk-level">Low</td>
+							<td><span>72</span><br> <span
+								class="additional-info-percentages">(600.0%)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-5">Authentication Request Identified</a></th>
+							<td class="risk-level">Informational</td>
+							<td><span>3</span><br> <span
+								class="additional-info-percentages">(25.0%)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-6">Information Disclosure - Sensitive Information in URL</a></th>
+							<td class="risk-level">Informational</td>
+							<td><span>11</span><br> <span
+								class="additional-info-percentages">(91.7%)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-7">Information Disclosure - Suspicious Comments</a></th>
+							<td class="risk-level">Informational</td>
+							<td><span>20</span><br> <span
+								class="additional-info-percentages">(166.7%)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-8">Loosely Scoped Cookie</a></th>
+							<td class="risk-level">Informational</td>
+							<td><span>7</span><br> <span
+								class="additional-info-percentages">(58.3%)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-9">Modern Web Application</a></th>
+							<td class="risk-level">Informational</td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(8.3%)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-10">Session Management Response Identified</a></th>
+							<td class="risk-level">Informational</td>
+							<td><span>11</span><br> <span
+								class="additional-info-percentages">(91.7%)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-11">User Agent Fuzzer</a></th>
+							<td class="risk-level">Informational</td>
+							<td><span>312</span><br> <span
+								class="additional-info-percentages">(2,600.0%)</span></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th scope="row">Total</th>
+							<td></td>
+							<td>12</td>
+						</tr>
+					</tfoot>
+				</table>
+			</section>
+		</section>
+
+		<section id="alerts" class="alerts">
+			<h2>Alerts</h2>
+			<ol>
+				
+				 
+				 
+				
+				
+				<li id="alerts--risk-2-confidence-3">
+					<h3>
+						<span>Risk</span>=<span
+							class="risk-level">Medium</span>, <span>Confidence</span>=<span
+							class="confidence-level">High</span> <span>(2)</span>
+					</h3>
+					<ol>
+						
+						
+						
+					</ol>
+				</li>
+				
+				
+				
+				
+				  
+				 
+				
+				
+				
+				
+				<li id="alerts--risk-1-confidence-2">
+					<h3>
+						<span>Risk</span>=<span
+							class="risk-level">Low</span>, <span>Confidence</span>=<span
+							class="confidence-level">Medium</span> <span>(3)</span>
+					</h3>
+					<ol>
+						
+						<li class="alerts--site-li">
+							<h4>
+								<span class="site">http://localhost:3000</span> <span>(2)</span>
+							</h4>
+							<ol>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-2">Cookie No HttpOnly Flag</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET http://localhost:3000</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				<li>
+					<span><a href="https://owasp.org/Top10/A05_2021-Security_Misconfiguration/">OWASP_2021_A05</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes">WSTG-v42-SESS-02</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration.html">OWASP_2017_A06</a></span> 
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>A cookie has been set without the HttpOnly flag, which means that the cookie can be accessed by JavaScript. If a malicious script can be run on this page then the cookie will be accessible and can be transmitted to another site. If this is a session cookie then session hijacking may be possible.</p>
+ </td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (185 bytes)</summary>
+				
+				<pre><code>GET http://localhost:3000 HTTP/1.1
+host: localhost:3000
+user-agent: Mozilla/5.0 (Windows NT 10.0; rv:125.0) Gecko/20100101 Firefox/125.0
+pragma: no-cache
+cache-control: no-cache
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (1070 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 302 Found
+Content-Security-Policy: default-src &#39;self&#39;;script-src &#39;self&#39; https://cdn.jsdelivr.net;base-uri &#39;self&#39;;font-src &#39;self&#39; https: data:;form-action &#39;self&#39;;frame-ancestors &#39;self&#39;;img-src &#39;self&#39; data:;object-src &#39;none&#39;;script-src-attr &#39;none&#39;;style-src &#39;self&#39; https: &#39;unsafe-inline&#39;;upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Set-Cookie: _csrf=3pJ5ex4C_ucvYV-VFifpA_aI; Path=/
+Set-Cookie: connect.sid=s%3A9spu6L-v6YaV9U0XNrTmQPzo-m1fA85g.csLROl213yg6JTjJFQBnA9MvC%2BYonl0dMBZrIt7GO9A; Path=/; HttpOnly
+Location: /auth/login
+Vary: Accept
+Content-Type: text/plain; charset=utf-8
+Content-Length: 33
+Date: Sun, 02 Mar 2025 16:22:31 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+</code></pre>
+				
+				
+			</details> <details class="response-body" open="open">
+				<summary>Response body (33 bytes)</summary>
+				
+				<pre><code>Found. Redirecting to /auth/login</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Parameter</th>
+		<td><pre><code>_csrf</code></pre></td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Evidence</th>
+		<td><pre><code>Set-Cookie: _csrf</code></pre></td>
+	</tr>
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Ensure that the HttpOnly flag is set for all cookies.</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-3">Cookie without SameSite Attribute</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET http://localhost:3000</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				<li>
+					<span><a href="https://owasp.org/Top10/A01_2021-Broken_Access_Control/">OWASP_2021_A01</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes">WSTG-v42-SESS-02</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-top-ten/2017/A5_2017-Broken_Access_Control.html">OWASP_2017_A05</a></span> 
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>A cookie has been set without the SameSite attribute, which means that the cookie can be sent as a result of a &#39;cross-site&#39; request. The SameSite attribute is an effective counter measure to cross-site request forgery, cross-site script inclusion, and timing attacks.</p>
+ </td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (185 bytes)</summary>
+				
+				<pre><code>GET http://localhost:3000 HTTP/1.1
+host: localhost:3000
+user-agent: Mozilla/5.0 (Windows NT 10.0; rv:125.0) Gecko/20100101 Firefox/125.0
+pragma: no-cache
+cache-control: no-cache
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (1070 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 302 Found
+Content-Security-Policy: default-src &#39;self&#39;;script-src &#39;self&#39; https://cdn.jsdelivr.net;base-uri &#39;self&#39;;font-src &#39;self&#39; https: data:;form-action &#39;self&#39;;frame-ancestors &#39;self&#39;;img-src &#39;self&#39; data:;object-src &#39;none&#39;;script-src-attr &#39;none&#39;;style-src &#39;self&#39; https: &#39;unsafe-inline&#39;;upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Set-Cookie: _csrf=3pJ5ex4C_ucvYV-VFifpA_aI; Path=/
+Set-Cookie: connect.sid=s%3A9spu6L-v6YaV9U0XNrTmQPzo-m1fA85g.csLROl213yg6JTjJFQBnA9MvC%2BYonl0dMBZrIt7GO9A; Path=/; HttpOnly
+Location: /auth/login
+Vary: Accept
+Content-Type: text/plain; charset=utf-8
+Content-Length: 33
+Date: Sun, 02 Mar 2025 16:22:31 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+</code></pre>
+				
+				
+			</details> <details class="response-body" open="open">
+				<summary>Response body (33 bytes)</summary>
+				
+				<pre><code>Found. Redirecting to /auth/login</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Parameter</th>
+		<td><pre><code>_csrf</code></pre></td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Evidence</th>
+		<td><pre><code>Set-Cookie: _csrf</code></pre></td>
+	</tr>
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Ensure that the SameSite attribute is set to either &#39;lax&#39; or ideally &#39;strict&#39; for all cookies.</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+							</ol>
+						</li>
+						
+					</ol>
+				</li>
+				
+				
+				  
+				 
+				
+				
+				<li id="alerts--risk-0-confidence-3">
+					<h3>
+						<span>Risk</span>=<span
+							class="risk-level">Informational</span>, <span>Confidence</span>=<span
+							class="confidence-level">High</span> <span>(1)</span>
+					</h3>
+					<ol>
+						
+						
+						
+					</ol>
+				</li>
+				
+				<li id="alerts--risk-0-confidence-2">
+					<h3>
+						<span>Risk</span>=<span
+							class="risk-level">Informational</span>, <span>Confidence</span>=<span
+							class="confidence-level">Medium</span> <span>(4)</span>
+					</h3>
+					<ol>
+						
+						<li class="alerts--site-li">
+							<h4>
+								<span class="site">http://localhost:3000</span> <span>(1)</span>
+							</h4>
+							<ol>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-11">User Agent Fuzzer</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET http://localhost:3000</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.</p>
+ </td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (167 bytes)</summary>
+				
+				<pre><code>GET http://localhost:3000 HTTP/1.1
+host: localhost:3000
+user-agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)
+pragma: no-cache
+cache-control: no-cache
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (1076 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 200 OK
+Content-Security-Policy: default-src &#39;self&#39;;script-src &#39;self&#39; https://cdn.jsdelivr.net;base-uri &#39;self&#39;;font-src &#39;self&#39; https: data:;form-action &#39;self&#39;;frame-ancestors &#39;self&#39;;img-src &#39;self&#39; data:;object-src &#39;none&#39;;script-src-attr &#39;none&#39;;style-src &#39;self&#39; https: &#39;unsafe-inline&#39;;upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Set-Cookie: _csrf=UjvxgQGwnSIIIcEvMmvhssAi; Path=/
+Set-Cookie: connect.sid=s%3A2M7P5A4vyWokHE79DlSzMYpEKvepObVd.6AYrfEIOq7zRpFBbpN2tmQQaDg%2FWdpnmVGwcqKKGgDg; Path=/; HttpOnly
+Content-Type: text/html; charset=utf-8
+Content-Length: 12691
+ETag: W/&quot;3193-4jLJBhqyflyp1+vYFm/V1CZzg50&quot;
+Date: Sun, 02 Mar 2025 16:25:19 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+</code></pre>
+				
+				
+			</details> <details class="response-body">
+				<summary>Response body (12691 bytes)</summary>
+				
+				<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&#39;en&#39;&gt;
+&lt;head&gt;
+  &lt;meta charset=&#39;UTF-8&#39; /&gt;
+  &lt;meta name=&#39;viewport&#39; content=&#39;width=device-width, initial-scale=1.0&#39; /&gt;
+  &lt;title&gt;Bảng điều khiển FTRMS&lt;/title&gt;
+  &lt;!-- Bootstrap CSS --&gt;
+  &lt;link href=&#39;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css&#39; rel=&#39;stylesheet&#39; /&gt;
+  &lt;!-- Toastr CSS --&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css&quot;&gt;
+  &lt;!-- Custom CSS --&gt;
+  &lt;link rel=&#39;stylesheet&#39; href=&#39;/css/styles.css&#39; /&gt;
+  &lt;style&gt;
+    .modal-header {
+      background-color: #343a40;
+      color: white;
+    }
+    .modal-footer {
+      background-color: #f8f9fa;
+    }
+    .modal-body ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .modal-body li {
+      padding: 8px 0;
+      border-bottom: 1px solid #e9ecef;
+    }
+    .modal-body li:last-child {
+      border-bottom: none;
+    }
+    /* Custom styles for dashboard and reports */
+    .card-title {
+      font-weight: bold;
+    }
+    .table-hover tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+    #residencePieChart {
+      border: none; /* Remove border if not needed */
+    }
+  &lt;/style&gt;
+  &lt;meta name=&quot;csrf-token&quot; content=&quot;OsnadV2p-3wtsrcQ477f-YKP91HSQOgINpJc&quot;&gt;
+  &lt;!-- Font Awesome --&gt;
+  &lt;link href=&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;/head&gt;
+&lt;body class=&quot;d-flex flex-column min-vh-100&quot;&gt;
+  &lt;!-- Navbar --&gt;
+  &lt;nav class=&#39;navbar navbar-expand-lg&#39;&gt;
+    &lt;div class=&#39;container-fluid&#39;&gt;
+      &lt;a class=&#39;navbar-brand d-flex align-items-center&#39; href=&#39;/&#39;&gt;
+        &lt;img src=&#39;/images/Logo.png&#39; alt=&#39;Logo&#39; class=&#39;me-2&#39; style=&#39;height: 40px; width: auto;&#39; /&gt;
+        &lt;span class=&quot;brand-full&quot;&gt; Hệ thống quản lý tạm trú cho người nước ngoài tại Hà Nội&lt;/span&gt;
+        &lt;span class=&quot;brand-short&quot;&gt;FTRMS&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;button class=&#39;navbar-toggler&#39; type=&#39;button&#39; data-bs-toggle=&#39;collapse&#39; data-bs-target=&#39;#navbarNav&#39; aria-controls=&#39;navbarNav&#39; aria-expanded=&#39;false&#39; aria-label=&#39;Chuyển đổi điều hướng&#39;&gt;
+        &lt;span class=&#39;navbar-toggler-icon&#39;&gt;&lt;/span&gt;
+      &lt;/button&gt;
+      &lt;div class=&#39;collapse navbar-collapse&#39; id=&#39;navbarNav&#39;&gt;
+        &lt;ul class=&#39;navbar-nav ms-auto&#39;&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+
+  &lt;!-- Main content --&gt;
+  &lt;div class=&#39;container mt-4 flex-grow-1&#39;&gt;
+    &lt;div class=&#39;d-flex align-items-center justify-content-center vh-100&#39;&gt;
+  &lt;div class=&#39;background-overlay&#39;&gt;&lt;/div&gt;
+
+  &lt;div
+    class=&#39;card shadow-lg p-4 mb-5 bg-white rounded&#39;
+    style=&#39;width: 400px; position: relative; z-index: 2;&#39;
+  &gt;
+    &lt;div class=&#39;card-body&#39;&gt;
+      &lt;div class=&#39;text-center mb-4&#39;&gt;
+        &lt;img src=&#39;/images/Logo.png&#39; alt=&#39;Logo&#39; class=&#39;img-fluid&#39; style=&#39;max-width: 100px;&#39; /&gt;
+      &lt;/div&gt;
+      &lt;h2 class=&#39;text-center mb-4&#39;&gt;Đăng nhập&lt;/h2&gt;
+
+      &lt;!-- Hiển thị thông báo lỗi nếu có --&gt;
+
+      &lt;!-- Hiển thị thông báo thành công nếu có --&gt;
+
+      &lt;form action=&#39;/auth/login&#39; method=&#39;POST&#39;&gt;
+        &lt;input type=&#39;hidden&#39; name=&#39;_csrf&#39; value=&#39;OsnadV2p-3wtsrcQ477f-YKP91HSQOgINpJc&#39; /&gt;
+
+        &lt;div class=&#39;mb-3&#39;&gt;
+          &lt;label for=&#39;username&#39; class=&#39;form-label&#39;&gt;Tên đăng nhập&lt;/label&gt;
+          &lt;input
+            type=&#39;text&#39;
+            class=&#39;form-control&#39;
+            id=&#39;username&#39;
+            name=&#39;username&#39;
+            placeholder=&#39;Nhập tên đăng nhập của bạn&#39;
+            required
+          /&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&#39;mb-3 position-relative&#39;&gt;
+          &lt;label for=&#39;password&#39; class=&#39;form-label&#39;&gt;Mật khẩu&lt;/label&gt;
+          &lt;input
+            type=&#39;password&#39;
+            class=&#39;form-control&#39;
+            id=&#39;password&#39;
+            name=&#39;password&#39;
+            placeholder=&#39;Nhập mật khẩu của bạn&#39;
+            required
+          /&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&#39;d-grid gap-2&#39;&gt;
+          &lt;button type=&#39;submit&#39; class=&#39;btn btn-primary&#39;&gt;Đăng nhập&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&#39;text-center mt-3&#39;&gt;
+          &lt;a href=&#39;/auth/register&#39; class=&#39;text-muted&#39;&gt;Chưa có tài khoản? Đăng ký&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    // Tự động ẩn các thông báo sau 5 giây setTimeout(function() { let alerts =
+    document.querySelectorAll(&#39;.alert&#39;); alerts.forEach(function(alert) { let alertInstance = new
+    bootstrap.Alert(alert); alertInstance.close(); }); }, 5000); // 5 giây
+  &lt;/script&gt;
+
+&lt;/div&gt;
+
+&lt;!-- CSS --&gt;
+&lt;style&gt;
+  html, body { height: 100%; margin: 0; padding: 0; } body { background:
+  url(&#39;/images/login_background.jpg&#39;) no-repeat center center fixed; background-size: cover;
+  overflow: hidden; } .background-overlay { position: fixed; top: 0; left: 0; width: 100%; height:
+  100vh; background-color: rgba(0, 0, 0, 0.5); backdrop-filter: blur(10px); z-index: 1; }
+  .card:hover { transform: scale(1.05); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
+&lt;/style&gt; &lt;!-- Đây là nơi nội dung từ view con sẽ được chèn vào --&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Profile Modal --&gt;
+  &lt;div class=&quot;modal fade&quot; id=&quot;profileModal&quot; tabindex=&quot;-1&quot; aria-labelledby=&quot;profileModalLabel&quot; aria-hidden=&quot;true&quot;&gt;
+    &lt;div class=&quot;modal-dialog modal-lg&quot;&gt;
+      &lt;div class=&quot;modal-content&quot;&gt;
+        &lt;div class=&quot;modal-header&quot;&gt;
+          &lt;h5 class=&quot;modal-title&quot; id=&quot;profileModalLabel&quot;&gt;Thông Tin Người Dùng&lt;/h5&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;modal-body&quot;&gt;
+          &lt;ul id=&quot;profileInfo&quot;&gt;
+            &lt;li&gt;&lt;strong&gt;Tên đăng nhập:&lt;/strong&gt; &lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Email:&lt;/strong&gt; &lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Số điện thoại:&lt;/strong&gt; &lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Tên:&lt;/strong&gt; &lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Ngày sinh:&lt;/strong&gt; Invalid Date&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Quốc tịch:&lt;/strong&gt; &lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Giới tính:&lt;/strong&gt; &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;modal-footer&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-bs-dismiss=&quot;modal&quot;&gt;Đóng&lt;/button&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#editProfileModal&quot;&gt;Chỉnh sửa&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Edit Profile Modal --&gt;
+  &lt;div class=&quot;modal fade&quot; id=&quot;editProfileModal&quot; tabindex=&quot;-1&quot; aria-labelledby=&quot;editProfileModalLabel&quot; aria-hidden=&quot;true&quot;&gt;
+    &lt;div class=&quot;modal-dialog modal-lg&quot;&gt;
+      &lt;div class=&quot;modal-content&quot;&gt;
+        &lt;div class=&quot;modal-header&quot;&gt;
+          &lt;h5 class=&quot;modal-title&quot; id=&quot;editProfileModalLabel&quot;&gt;Chỉnh Sửa Thông Tin Người Dùng&lt;/h5&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;modal-body&quot;&gt;
+          &lt;form class=&quot;modal-form&quot; id=&quot;editProfileForm&quot;&gt;
+            &lt;input type=&quot;hidden&quot; name=&quot;_csrf&quot; value=&quot;OsnadV2p-3wtsrcQ477f-YKP91HSQOgINpJc&quot;&gt;
+            &lt;div class=&quot;mb-3&quot;&gt;
+              &lt;label for=&quot;passportNumber&quot; class=&quot;form-label&quot;&gt;Số hộ chiếu&lt;/label&gt;
+              &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;passportNumber&quot; name=&quot;passportNumber&quot; value=&quot;&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;mb-3&quot;&gt;
+              &lt;label for=&quot;visaType&quot; class=&quot;form-label&quot;&gt;Loại visa&lt;/label&gt;
+              &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;visaType&quot; name=&quot;visaType&quot; value=&quot;&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;mb-3&quot;&gt;
+              &lt;label for=&quot;visaExpiryDate&quot; class=&quot;form-label&quot;&gt;Ngày hết hạn visa&lt;/label&gt;
+              &lt;input type=&quot;date&quot; class=&quot;form-control&quot; id=&quot;visaExpiryDate&quot; name=&quot;visaExpiryDate&quot; value=&quot;&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;mb-3&quot;&gt;
+              &lt;label for=&quot;address&quot; class=&quot;form-label&quot;&gt;Địa chỉ&lt;/label&gt;
+              &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;address&quot; name=&quot;address&quot; value=&quot;&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-footer&quot;&gt;
+              &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-bs-dismiss=&quot;modal&quot;&gt;Hủy&lt;/button&gt;
+              &lt;button type=&quot;submit&quot; class=&quot;btn btn-success&quot;&gt;Lưu&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Footer --&gt;
+  &lt;footer class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;container text-center&quot;&gt;
+      &lt;a href=&quot;https://facebook.com&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;fab fa-facebook-f&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+      &lt;a href=&quot;https://twitter.com&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;fab fa-twitter&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+      &lt;a href=&quot;https://instagram.com&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;fab fa-instagram&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+
+  &lt;!-- Bootstrap JS --&gt;
+  &lt;script src=&#39;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js&#39;&gt;&lt;/script&gt;
+  &lt;!-- Font Awesome --&gt;
+  &lt;script src=&quot;https://kit.fontawesome.com/a076d05399.js&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+  &lt;!-- Include the external script --&gt;
+  &lt;script src=&quot;/js/toggleLang.js&quot;&gt;&lt;/script&gt;
+  &lt;!-- jQuery (required for Toastr) --&gt;
+  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js&quot;&gt;&lt;/script&gt;
+  &lt;!-- Toastr JS --&gt;
+  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js&quot;&gt;&lt;/script&gt;
+  &lt;!-- Include the external script --&gt;
+  &lt;script src=&quot;/js/navbar.js&quot;&gt;&lt;/script&gt;
+
+  &lt;script&gt;
+    document.addEventListener(&#39;DOMContentLoaded&#39;, function() {
+      // Select all forms with the class &#39;modal-form&#39;
+      const modalForms = document.querySelectorAll(&#39;.modal-form&#39;);
+
+      modalForms.forEach(form =&gt; {
+        form.addEventListener(&#39;submit&#39;, function(event) {
+          event.preventDefault(); // Prevent the default form submission
+          console.log(&#39;Modal form submitted:&#39;, form.id);
+
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData.entries());
+
+          console.log(&#39;Data to be sent:&#39;, data);
+
+          // Determine the correct endpoint based on form ID or other attributes
+          let endpoint = &#39;/declaration/update&#39;; // Default endpoint
+          if (form.id === &#39;editProfileForm&#39;) {
+            endpoint = &#39;/declaration/update&#39;;
+          }
+          // Add more conditions if you have different endpoints for different forms
+
+          fetch(endpoint, {
+            method: &#39;POST&#39;, // Ensure method is POST
+            headers: {
+              &#39;Content-Type&#39;: &#39;application/json&#39;,
+              &#39;CSRF-Token&#39;: data._csrf // Include CSRF token
+            },
+            body: JSON.stringify(data)
+          })
+          .then(response =&gt; {
+            console.log(`Fetch request sent to ${endpoint}`);
+            return response.json();
+          })
+          .then(data =&gt; {
+            if (data.success) {
+              console.log(&#39;Update successful:&#39;, data);
+              alert(&#39;Thông tin đã được cập nhật thành công.&#39;);
+              const bootstrapModal = bootstrap.Modal.getInstance(form.closest(&#39;.modal&#39;));
+              bootstrapModal.hide();
+            } else {
+              console.error(&#39;Error in update response:&#39;, data.message);
+              alert(data.message || &#39;Có lỗi xảy ra khi cập nhật thông tin.&#39;);
+            }
+          })
+          .catch(error =&gt; console.error(&#39;Error updating data:&#39;, error));
+        });
+      });
+    });
+
+    // Configure Toastr options
+    toastr.options = {
+      &quot;closeButton&quot;: true,
+      &quot;debug&quot;: false,
+      &quot;newestOnTop&quot;: true,
+      &quot;progressBar&quot;: true,
+      &quot;positionClass&quot;: &quot;toast-top-right&quot;,
+      &quot;preventDuplicates&quot;: true,
+      &quot;onclick&quot;: null,
+      &quot;showDuration&quot;: &quot;300&quot;,
+      &quot;hideDuration&quot;: &quot;1000&quot;,
+      &quot;timeOut&quot;: &quot;5000&quot;,
+      &quot;extendedTimeOut&quot;: &quot;1000&quot;,
+      &quot;showEasing&quot;: &quot;swing&quot;,
+      &quot;hideEasing&quot;: &quot;linear&quot;,
+      &quot;showMethod&quot;: &quot;fadeIn&quot;,
+      &quot;hideMethod&quot;: &quot;fadeOut&quot;
+    };
+
+    // Function to show notifications
+    function showNotification(type, message, title = &#39;&#39;) {
+      switch(type) {
+        case &#39;success&#39;:
+          toastr.success(message, title || &#39;Thành công&#39;);
+          break;
+        case &#39;error&#39;:
+          toastr.error(message, title || &#39;Lỗi&#39;);
+          break;
+        case &#39;warning&#39;:
+          toastr.warning(message, title || &#39;Cảnh báo&#39;);
+          break;
+        case &#39;info&#39;:
+          toastr.info(message, title || &#39;Thông báo&#39;);
+          break;
+        default:
+          toastr.info(message, title || &#39;Thông báo&#39;);
+      }
+    }
+
+    // Example usage
+    // showNotification(&#39;success&#39;, &#39;Đăng nhập thành công!&#39;, &#39;Thành công&#39;);
+    // showNotification(&#39;error&#39;, &#39;Đăng nhập thất bại. Vui lòng thử lại.&#39;, &#39;Lỗi&#39;);
+
+    // Trigger notifications based on flash messages
+    const successMessage = &#39;&#39;;
+    const errorMessage = &#39;&#39;;
+
+    if (successMessage) {
+      showNotification(&#39;success&#39;, successMessage);
+    }
+
+    if (errorMessage) {
+      showNotification(&#39;error&#39;, errorMessage);
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Parameter</th>
+		<td><pre><code>Header User-Agent</code></pre></td>
+	</tr>
+	<tr>
+		<th scope="row">Attack</th>
+		<td><pre><code>Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)</code></pre></td>
+	</tr>
+	
+	
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+							</ol>
+						</li>
+						
+					</ol>
+				</li>
+				
+				<li id="alerts--risk-0-confidence-1">
+					<h3>
+						<span>Risk</span>=<span
+							class="risk-level">Informational</span>, <span>Confidence</span>=<span
+							class="confidence-level">Low</span> <span>(2)</span>
+					</h3>
+					<ol>
+						
+						<li class="alerts--site-li">
+							<h4>
+								<span class="site">http://localhost:3000</span> <span>(1)</span>
+							</h4>
+							<ol>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-8">Loosely Scoped Cookie</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET http://localhost:3000</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				<li>
+					<span><a href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes">WSTG-v42-SESS-02</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures/">OWASP_2021_A08</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration.html">OWASP_2017_A06</a></span> 
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>Cookies can be scoped by domain or path. This check is only concerned with domain scope.The domain scope applied to a cookie determines which domains can access it. For example, a cookie can be scoped strictly to a subdomain e.g. www.nottrusted.com, or loosely scoped to a parent domain e.g. nottrusted.com. In the latter case, any subdomain of nottrusted.com can access the cookie. Loosely scoped cookies are common in mega-applications like google.com and live.com. Cookies set from a subdomain like app.foo.bar are transmitted only to that domain by the browser. However, cookies scoped to a parent-level domain may be transmitted to the parent, or any subdomain of the parent.</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Other info</th>
+		<td> 
+<p>The origin domain used for comparison was: </p>
+
+<p>localhost</p>
+
+<p>_csrf=3pJ5ex4C_ucvYV-VFifpA_aI</p>
+
+<p>connect.sid=s%3A9spu6L-v6YaV9U0XNrTmQPzo-m1fA85g.csLROl213yg6JTjJFQBnA9MvC%2BYonl0dMBZrIt7GO9A</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (185 bytes)</summary>
+				
+				<pre><code>GET http://localhost:3000 HTTP/1.1
+host: localhost:3000
+user-agent: Mozilla/5.0 (Windows NT 10.0; rv:125.0) Gecko/20100101 Firefox/125.0
+pragma: no-cache
+cache-control: no-cache
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (1070 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 302 Found
+Content-Security-Policy: default-src &#39;self&#39;;script-src &#39;self&#39; https://cdn.jsdelivr.net;base-uri &#39;self&#39;;font-src &#39;self&#39; https: data:;form-action &#39;self&#39;;frame-ancestors &#39;self&#39;;img-src &#39;self&#39; data:;object-src &#39;none&#39;;script-src-attr &#39;none&#39;;style-src &#39;self&#39; https: &#39;unsafe-inline&#39;;upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Set-Cookie: _csrf=3pJ5ex4C_ucvYV-VFifpA_aI; Path=/
+Set-Cookie: connect.sid=s%3A9spu6L-v6YaV9U0XNrTmQPzo-m1fA85g.csLROl213yg6JTjJFQBnA9MvC%2BYonl0dMBZrIt7GO9A; Path=/; HttpOnly
+Location: /auth/login
+Vary: Accept
+Content-Type: text/plain; charset=utf-8
+Content-Length: 33
+Date: Sun, 02 Mar 2025 16:22:31 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+</code></pre>
+				
+				
+			</details> <details class="response-body" open="open">
+				<summary>Response body (33 bytes)</summary>
+				
+				<pre><code>Found. Redirecting to /auth/login</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	
+	
+	
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Always scope cookies to a FQDN (Fully Qualified Domain Name).</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+							</ol>
+						</li>
+						
+					</ol>
+				</li>
+				  
+			</ol>
+		</section>
+
+		<section id="appendix" class="appendix">
+			<h2>Appendix</h2>
+
+			<section id="alert-types" class="alert-types">
+				<h3>Alert types</h3>
+				<p class="alert-types-intro">This section contains additional information on the types of alerts in the report.</p>
+				<ol>
+					<li
+						id="alert-type-0">
+						<h4>CSP: Wildcard Directive</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10055/">CSP</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/693.html">693</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>15</td>
+							</tr>
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="http://www.w3.org/TR/CSP2/">http://www.w3.org/TR/CSP2/</a></li>
+										<li><a
+											href="http://www.w3.org/TR/CSP/">http://www.w3.org/TR/CSP/</a></li>
+										<li><a
+											href="http://caniuse.com/#search=content+security+policy">http://caniuse.com/#search=content+security+policy</a></li>
+										<li><a
+											href="http://content-security-policy.com/">http://content-security-policy.com/</a></li>
+										<li><a
+											href="https://github.com/shapesecurity/salvation">https://github.com/shapesecurity/salvation</a></li>
+										<li><a
+											href="https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources">https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-1">
+						<h4>CSP: style-src unsafe-inline</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10055/">CSP</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/693.html">693</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>15</td>
+							</tr>
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="http://www.w3.org/TR/CSP2/">http://www.w3.org/TR/CSP2/</a></li>
+										<li><a
+											href="http://www.w3.org/TR/CSP/">http://www.w3.org/TR/CSP/</a></li>
+										<li><a
+											href="http://caniuse.com/#search=content+security+policy">http://caniuse.com/#search=content+security+policy</a></li>
+										<li><a
+											href="http://content-security-policy.com/">http://content-security-policy.com/</a></li>
+										<li><a
+											href="https://github.com/shapesecurity/salvation">https://github.com/shapesecurity/salvation</a></li>
+										<li><a
+											href="https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources">https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-2">
+						<h4>Cookie No HttpOnly Flag</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10010/">Cookie No HttpOnly Flag</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/1004.html">1004</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>13</td>
+							</tr>
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://owasp.org/www-community/HttpOnly">https://owasp.org/www-community/HttpOnly</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-3">
+						<h4>Cookie without SameSite Attribute</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10054/">Cookie without SameSite Attribute</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/1275.html">1275</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>13</td>
+							</tr>
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site">https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-4">
+						<h4>Cross-Domain JavaScript Source File Inclusion</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10017/">Cross-Domain JavaScript Source File Inclusion</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/829.html">829</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>15</td>
+							</tr>
+							
+						</table>
+					</li>
+					<li
+						id="alert-type-5">
+						<h4>Authentication Request Identified</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10111/">Authentication Request Identified</a>)
+									</span>   
+								</td>
+							</tr>
+							
+							
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://www.zaproxy.org/docs/desktop/addons/authentication-helper/auth-req-id/">https://www.zaproxy.org/docs/desktop/addons/authentication-helper/auth-req-id/</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-6">
+						<h4>Information Disclosure - Sensitive Information in URL</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10024/">Information Disclosure - Sensitive Information in URL</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/200.html">200</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>13</td>
+							</tr>
+							
+						</table>
+					</li>
+					<li
+						id="alert-type-7">
+						<h4>Information Disclosure - Suspicious Comments</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10027/">Information Disclosure - Suspicious Comments</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/200.html">200</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>13</td>
+							</tr>
+							
+						</table>
+					</li>
+					<li
+						id="alert-type-8">
+						<h4>Loosely Scoped Cookie</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/90033/">Loosely Scoped Cookie</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/565.html">565</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>15</td>
+							</tr>
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://tools.ietf.org/html/rfc6265#section-4.1">https://tools.ietf.org/html/rfc6265#section-4.1</a></li>
+										<li><a
+											href="https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html">https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</a></li>
+										<li><a
+											href="http://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies">http://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-9">
+						<h4>Modern Web Application</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10109/">Modern Web Application</a>)
+									</span>   
+								</td>
+							</tr>
+							
+							
+							
+						</table>
+					</li>
+					<li
+						id="alert-type-10">
+						<h4>Session Management Response Identified</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10112/">Session Management Response Identified</a>)
+									</span>   
+								</td>
+							</tr>
+							
+							
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id">https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-11">
+						<h4>User Agent Fuzzer</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by an active scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10104/">User Agent Fuzzer</a>)
+									</span>   
+								</td>
+							</tr>
+							
+							
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://owasp.org/wstg">https://owasp.org/wstg</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+				</ol>
+			</section>
+		</section>
+		 
+	</main>
+</body>
+</html>
+
+
+

@@ -1,0 +1,56 @@
+<h1>Quản Lý Cơ Sở Tạm Trú</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Tên Cơ Sở</th>
+      <th>Loại</th>
+      <th>Địa Chỉ</th>
+      <th>Số Điện Thoại</th>
+      <th>Đại Diện</th>
+      <th>Chủ Sở Hữu</th>
+      <th>Hành Động</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each accommodations}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.type}}</td>
+        <td>{{this.address}}</td>
+        <td>{{this.phone}}</td>
+        {{!-- <td>{{this.representativ[name]}}</td> --}}
+        {{!-- <td>{{accommodationOwners[this._id]}}</td> --}}
+        <td>
+          <button class="btn btn-primary" onclick="editAccommodation('{{this._id}}')">Sửa</button>
+          <button class="btn btn-danger" onclick="deleteAccommodation('{{this._id}}')">Xóa</button>
+        </td>
+      </tr>
+    {{else}}
+      <tr>
+        <td colspan="7">Không có cơ sở cư trú nào</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<script>
+  function editAccommodation(id) {
+    window.location.href = `/accommodations/edit/${id}`;
+  }
+
+  function deleteAccommodation(id) {
+    if (confirm('Bạn có chắc chắn muốn xóa cơ sở này?')) {
+      fetch(`/accommodations/delete/${id}`, { method: 'DELETE' })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            alert('Xóa thành công');
+            location.reload();
+          } else {
+            alert('Xóa thất bại');
+          }
+        });
+    }
+  }
+</script> 

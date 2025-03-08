@@ -75,22 +75,19 @@
 <!-- Tabs content -->
 <div class='tab-content' id='residenceTabsContent'>
   <div class="tab-pane active" id="pending">
-    {{#each declarations}}
+    {{#each residences}}
       {{#if (eq this.status 'Pending')}}
         <div class="card mb-3">
           <div class="card-header">
-            <h5>{{this.user.full_name}}</h5>
-            <p><strong>{{t 'residences.email'}}:</strong> {{this.user.email}}</p>
-            <p><strong>{{t 'residences.phone'}}:</strong> {{this.user.phone}}</p>
+            <h5>{{this.foreignResident.fullName}}</h5>
           </div>
           <div class="card-body">
-            <p><strong>{{t 'residences.full_name'}}:</strong> {{this.full_name}}</p>
-            <p><strong>{{t 'residences.nationality'}}:</strong> {{this.nationality}}</p>
-            <p><strong>{{t 'residences.accommodation'}}:</strong> {{this.accommodation}}</p>
+            <p><strong>{{t 'residences.full_name'}}:</strong> {{this.foreignResident.fullName}}</p>
+            <p><strong>{{t 'residences.nationality'}}:</strong> {{this.foreignResident.nationality}}</p>
+            <p><strong>{{t 'residences.accommodation'}}:</strong> {{this.accommodation.name}}</p>
             <p><strong>{{t 'residences.check_in'}}:</strong> {{formatDate this.check_in}}</p>
             <p><strong>{{t 'residences.check_out'}}:</strong> {{formatDate this.check_out}}</p>
             <p><strong>{{t 'residences.reason'}}:</strong> {{this.reason}}</p>
-            <p><strong>{{t 'residences.declarationDate'}}:</strong> {{formatDate this.declarationDate}}</p>
             <p><strong>{{t 'residences.status'}}:</strong> {{this.status}}</p>
             <button class="btn btn-success" data-id="{{this._id}}" data-status="Approved">{{t 'residences.approve'}}</button>
             <button class="btn btn-danger" data-id="{{this._id}}" data-status="Rejected">{{t 'residences.reject'}}</button>
@@ -100,51 +97,66 @@
     {{/each}}
   </div>
   <div class="tab-pane" id="approved">
-    {{#each declarations}}
+    {{#each residences}}
       {{#if (eq this.status 'Approved')}}
         <div class="card mb-3">
           <div class="card-header">
-            <h5>{{this.user.full_name}}</h5>
-            <p><strong>{{t 'residences.email'}}:</strong> {{this.user.email}}</p>
-            <p><strong>{{t 'residences.phone'}}:</strong> {{this.user.phone}}</p>
+            <h5>{{this.foreignResident.fullName}}</h5>
           </div>
           <div class="card-body">
-            <p><strong>{{t 'residences.full_name'}}:</strong> {{this.full_name}}</p>
-            <p><strong>{{t 'residences.nationality'}}:</strong> {{this.nationality}}</p>
-            <p><strong>{{t 'residences.accommodation'}}:</strong> {{this.accommodation}}</p>
+            <p><strong>{{t 'residences.full_name'}}:</strong> {{this.foreignResident.fullName}}</p>
+            <p><strong>{{t 'residences.nationality'}}:</strong> {{this.foreignResident.nationality}}</p>
+            <p><strong>{{t 'residences.accommodation'}}:</strong> {{this.accommodation.name}}</p>
             <p><strong>{{t 'residences.check_in'}}:</strong> {{formatDate this.check_in}}</p>
             <p><strong>{{t 'residences.check_out'}}:</strong> {{formatDate this.check_out}}</p>
             <p><strong>{{t 'residences.reason'}}:</strong> {{this.reason}}</p>
-            <p><strong>{{t 'residences.declarationDate'}}:</strong> {{formatDate this.declarationDate}}</p>
             <p><strong>{{t 'residences.status'}}:</strong> {{this.status}}</p>
+            <button class="btn btn-success" data-id="{{this._id}}" data-status="Approved">{{t 'residences.approve'}}</button>
+            <button class="btn btn-danger" data-id="{{this._id}}" data-status="Rejected">{{t 'residences.reject'}}</button>
           </div>
         </div>
       {{/if}}
     {{/each}}
   </div>
   <div class="tab-pane" id="rejected">
-    {{#each declarations}}
+    {{#each residences}}
       {{#if (eq this.status 'Rejected')}}
         <div class="card mb-3">
           <div class="card-header">
-            <h5>{{this.user.full_name}}</h5>
-            <p><strong>{{t 'residences.email'}}:</strong> {{this.user.email}}</p>
-            <p><strong>{{t 'residences.phone'}}:</strong> {{this.user.phone}}</p>
+            <h5>{{this.foreignResident.fullName}}</h5>
           </div>
           <div class="card-body">
-            <p><strong>{{t 'residences.full_name'}}:</strong> {{this.full_name}}</p>
-            <p><strong>{{t 'residences.nationality'}}:</strong> {{this.nationality}}</p>
-            <p><strong>{{t 'residences.accommodation'}}:</strong> {{this.accommodation}}</p>
+            <p><strong>{{t 'residences.full_name'}}:</strong> {{this.foreignResident.fullName}}</p>
+            <p><strong>{{t 'residences.nationality'}}:</strong> {{this.foreignResident.nationality}}</p>
+            <p><strong>{{t 'residences.accommodation'}}:</strong> {{this.accommodation.name}}</p>
             <p><strong>{{t 'residences.check_in'}}:</strong> {{formatDate this.check_in}}</p>
             <p><strong>{{t 'residences.check_out'}}:</strong> {{formatDate this.check_out}}</p>
             <p><strong>{{t 'residences.reason'}}:</strong> {{this.reason}}</p>
-            <p><strong>{{t 'residences.declarationDate'}}:</strong> {{formatDate this.declarationDate}}</p>
             <p><strong>{{t 'residences.status'}}:</strong> {{this.status}}</p>
+            <button class="btn btn-success" data-id="{{this._id}}" data-status="Approved">{{t 'residences.approve'}}</button>
+            <button class="btn btn-danger" data-id="{{this._id}}" data-status="Rejected">{{t 'residences.reject'}}</button>
           </div>
         </div>
       {{/if}}
     {{/each}}
   </div>
+  {{!-- <div class="tab-pane" id="foreign-residents">
+    {{#each foreignResidents}}
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5>{{this.fullName}}</h5>
+        </div>
+        <div class="card-body">
+          <p><strong>{{t 'residences.full_name'}}:</strong> {{this.fullName}}</p>
+          <p><strong>{{t 'residences.nationality'}}:</strong> {{this.nationality}}</p>
+          <p><strong>{{t 'residences.accommodation'}}:</strong> {{this.accommodation.name}}</p>
+          <p><strong>{{t 'residences.passportNumber'}}:</strong> {{this.passportNumber}}</p>
+          <p><strong>{{t 'residences.visaType'}}:</strong> {{this.visaType}}</p>
+          <p><strong>{{t 'residences.visaExpiryDate'}}:</strong> {{formatDate this.visaExpiryDate}}</p>
+        </div>
+      </div>
+    {{/each}}
+  </div> --}}
 </div>
 
 <!-- Include Select2 and Bootstrap CSS/JS -->

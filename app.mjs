@@ -28,6 +28,7 @@ import registerRoutes from './routes/register.mjs';
 import apiRoutes from './routes/api.mjs'; // Import the API routes
 import residencesRoutes from './routes/residences.mjs';
 import adminRoutes from './routes/admin.mjs';
+import accommodationRoutes from './routes/accommodations.mjs';
 
 // Tính toán __dirname cho ES Modules
 const __filename = fileURLToPath(import.meta.url)
@@ -178,6 +179,9 @@ app.use('/residences', residencesRoutes);
 
 // Use the admin routes
 app.use('/admin', adminRoutes);
+
+// Register the accommodation routes
+app.use('/accommodations', accommodationRoutes);
 
 // Xử lý trang 404 (không tìm thấy route)
 app.use((req, res) => {

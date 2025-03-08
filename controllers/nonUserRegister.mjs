@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import User from '../models/User.mjs';
 import ForeignResident from '../models/ForeignResident.mjs';
+import Accommodation from '../models/Accommodation.mjs';
 
 export const registerUser = async (req, res) => {
   const { username, email, phone, password, confirmPassword, name, dateOfBirth, nationality, gender, passportNumber, visaType, visaExpiryDate, address } = req.body;
@@ -17,6 +18,13 @@ export const registerUser = async (req, res) => {
       return res.redirect('/register');
     }
 
+    // Find or assign an accommodation for the user
+    const accommodation = await Accommodation.findOne(); // Modify this logic to select the appropriate accommodation
+    if (!accommodation) {
+      req.flash('error_msg', 'No accommodation available');
+      return res.redirect('/register');
+    }
+
     user = new User({
       username,
       email,
@@ -26,6 +34,7 @@ export const registerUser = async (req, res) => {
       dateOfBirth,
       nationality,
       gender,
+      accommodation: accommodation._id, // Associate user with accommodation
     });
 
     await user.save();

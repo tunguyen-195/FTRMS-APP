@@ -1,9 +1,14 @@
 import mongoose from 'mongoose'
 
 const residenceSchema = new mongoose.Schema({
-  foreign_resident: {
+  foreignResident: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'ForeignResident',
+    required: true,
+  },
+  declaration: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Declaration',
     required: true,
   },
   accommodation: {
@@ -22,18 +27,13 @@ const residenceSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  managed_by: {
+  status: {
     type: String,
-    ref: 'User',
+    enum: ['Pending', 'Approved', 'Rejected'],
+    default: 'Pending',
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
-  },
+}, {
+  timestamps: true,
 })
 
 export default mongoose.model('Residence', residenceSchema)

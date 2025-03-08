@@ -3,14 +3,11 @@
 <div class="container">
   <form method="GET" action="/admin/reports" class="mb-4">
     <div class="row">
-      <div class="col-md-3">
-        <label for="userName">{{t 'reports.filters.userName'}}</label>
-        <input type="text" name="userName" class="form-control" value="{{filters.userName}}">
-      </div>
-      <div class="col-md-3">
+      <!-- Remove the nationality filter -->
+      <!-- <div class="col-md-3">
         <label for="nationality">{{t 'reports.filters.nationality'}}</label>
         <input type="text" name="nationality" class="form-control" value="{{filters.nationality}}">
-      </div>
+      </div> -->
       <div class="col-md-3">
         <label for="dateFrom">{{t 'reports.filters.dateFrom'}}</label>
         <input type="date" name="dateFrom" class="form-control" value="{{filters.dateFrom}}">
@@ -18,10 +15,6 @@
       <div class="col-md-3">
         <label for="dateTo">{{t 'reports.filters.dateTo'}}</label>
         <input type="date" name="dateTo" class="form-control" value="{{filters.dateTo}}">
-      </div>
-      <div class="col-md-3">
-        <label for="accommodation">{{t 'reports.filters.accommodation'}}</label>
-        <input type="text" name="accommodation" class="form-control" value="{{filters.accommodation}}">
       </div>
       <div class="col-md-3">
         <label for="status">{{t 'reports.filters.status'}}</label>
@@ -48,28 +41,28 @@
     <thead>
       <tr>
         <th>{{t 'reports.table.fullName'}}</th>
-        <th>{{t 'reports.table.email'}}</th>
         <th>{{t 'reports.table.nationality'}}</th>
         <th>{{t 'reports.table.accommodation'}}</th>
         <th>{{t 'reports.table.checkIn'}}</th>
         <th>{{t 'reports.table.checkOut'}}</th>
         <th>{{t 'reports.table.stayDuration'}}</th>
         <th>{{t 'reports.table.status'}}</th>
-        <th>{{t 'reports.table.details'}}</th>
       </tr>
     </thead>
     <tbody>
       {{#each reportData}}
         <tr>
-          <td>{{this.userName}}</td>
-          <td>{{this.userEmail}}</td>
+          <td>{{this.fullName}}</td>
           <td>{{this.nationality}}</td>
           <td>{{this.accommodation}}</td>
-          <td>{{formatDate this.check_in}}</td>
-          <td>{{formatDate this.check_out}}</td>
+          <td>{{formatDate this.checkIn}}</td>
+          <td>{{#if this.checkOut}}{{formatDate this.checkOut}}{{else}}N/A{{/if}}</td>
           <td>{{this.stayDuration}}</td>
           <td>{{this.status}}</td>
-          <td><a href="/admin/declarations/{{this._id}}" class="btn btn-info">{{t 'reports.table.viewButton'}}</a></td>
+        </tr>
+      {{else}}
+        <tr>
+          <td colspan="7">{{t 'reports.noData'}}</td>
         </tr>
       {{/each}}
     </tbody>

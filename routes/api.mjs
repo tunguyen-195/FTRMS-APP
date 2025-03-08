@@ -1,13 +1,14 @@
 import express from 'express';
 import Declaration from '../models/Declaration.mjs';
 import Unit from '../models/Unit.mjs';
+import ForeignResident from '../models/ForeignResident.mjs';
 
 const router = express.Router();
 
 // Endpoint to get residents by nationality
 router.get('/residents-by-country', async (req, res) => {
   try {
-    const residents = await Declaration.aggregate([
+    const residents = await ForeignResident.aggregate([
       {
         $match: { nationality: { $ne: null } }
       },
