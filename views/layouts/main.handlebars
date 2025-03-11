@@ -93,32 +93,59 @@
 
   <!-- Profile Modal -->
   <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="profileModalLabel">Thông Tin Người Dùng</h5>
+          <h5 class="modal-title" id="profileModalLabel">Profile</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <ul id="profileInfo">
-            <li><strong>Tên đăng nhập:</strong> {{user.username}}</li>
-            <li><strong>Email:</strong> {{user.email}}</li>
-            <li><strong>Số điện thoại:</strong> {{user.phone}}</li>
-            <li><strong>Tên:</strong> {{user.name}}</li>
-            <li><strong>Ngày sinh:</strong> {{formatDate user.dateOfBirth}}</li>
-            <li><strong>Quốc tịch:</strong> {{user.nationality}}</li>
-            <li><strong>Giới tính:</strong> {{user.gender}}</li>
-            {{#if user.foreignResident}}
-              <li><strong>Số hộ chiếu:</strong> {{user.foreignResident.passportNumber}}</li>
-              <li><strong>Loại visa:</strong> {{user.foreignResident.visaType}}</li>
-              <li><strong>Ngày hết hạn visa:</strong> {{formatDate user.foreignResident.visaExpiryDate}}</li>
-              <li><strong>Địa chỉ:</strong> {{user.foreignResident.address}}</li>
-            {{/if}}
-          </ul>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Chỉnh sửa</button>
+          <!-- User Information -->
+          <h5>User Information</h5>
+          <p><strong>Username:</strong> {{user.username}}</p>
+          <p><strong>Email:</strong> {{user.email}}</p>
+          <p><strong>Phone:</strong> {{user.phone}}</p>
+          <p><strong>Name:</strong> {{user.name}}</p>
+          <p><strong>Date of Birth:</strong> {{formatDate user.dateOfBirth}}</p>
+          <p><strong>Gender:</strong> {{user.gender}}</p>
+
+          <!-- Form to Update Personal Information -->
+          <h5>Update Personal Information</h5>
+          <form id="updateProfileForm" action="/profile/update" method="POST">
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" name="email" class="form-control" value="{{user.email}}" required>
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone</label>
+              <input type="text" name="phone" class="form-control" value="{{user.phone}}" required>
+            </div>
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" name="name" class="form-control" value="{{user.name}}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Information</button>
+          </form>
+
+          <!-- Form to Change Password -->
+          <h5>Change Password</h5>
+          <form id="changePasswordForm" action="/profile/change-password" method="POST">
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <div class="mb-3">
+              <label for="currentPassword" class="form-label">Current Password</label>
+              <input type="password" name="currentPassword" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="newPassword" class="form-label">New Password</label>
+              <input type="password" name="newPassword" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="confirmNewPassword" class="form-label">Confirm New Password</label>
+              <input type="password" name="confirmNewPassword" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Change Password</button>
+          </form>
         </div>
       </div>
     </div>
