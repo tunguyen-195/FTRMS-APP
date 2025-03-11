@@ -25,68 +25,68 @@
             <form id="registerForm" action="/register" method="POST" data-parsley-validate>
               <input type="hidden" name="_csrf" value="{{csrfToken}}">
               <!-- User Information -->
-              <h5>User Information</h5>
+              <h5>{{t 'register.userInformation'}}</h5>
               <div class="mb-3">
-                <label for="username" class="form-label"><i class="fas fa-user"></i> Username</label>
-                <input type="text" class="form-control" id="username" name="username" required data-parsley-trigger="change">
+                <label for="username" class="form-label">{{t 'register.username'}}</label>
+                <input type="text" class="form-control" id="username" name="username" required>
               </div>
               <div class="mb-3">
-                <label for="email" class="form-label"><i class="fas fa-envelope"></i> Email</label>
-                <input type="email" class="form-control" id="email" name="email" required data-parsley-type="email" data-parsley-trigger="change">
+                <label for="email" class="form-label">{{t 'register.email'}}</label>
+                <input type="email" class="form-control" id="email" name="email" required>
               </div>
               <div class="mb-3">
-                <label for="phone" class="form-label"><i class="fas fa-phone"></i> Phone</label>
-                <input type="text" class="form-control" id="phone" name="phone" required data-parsley-pattern="^\d{10}$" data-parsley-trigger="change">
+                <label for="phone" class="form-label">{{t 'register.phone'}}</label>
+                <input type="text" class="form-control" id="phone" name="phone" required>
               </div>
               <div class="mb-3">
-                <label for="password" class="form-label"><i class="fas fa-lock"></i> Password</label>
-                <input type="password" class="form-control" id="password" name="password" required data-parsley-minlength="6" data-parsley-trigger="change">
+                <label for="password" class="form-label">{{t 'register.password'}}</label>
+                <input type="password" class="form-control" id="password" name="password" required>
               </div>
               <div class="mb-3">
-                <label for="confirmPassword" class="form-label"><i class="fas fa-lock"></i> Confirm Password</label>
-                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required data-parsley-equalto="#password" data-parsley-trigger="change">
+                <label for="confirmPassword" class="form-label">{{t 'register.confirmPassword'}}</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
               </div>
               <div class="mb-3">
-                <label for="name" class="form-label"><i class="fas fa-id-card"></i> Full Name</label>
+                <label for="name" class="form-label">{{t 'register.fullName'}}</label>
                 <input type="text" class="form-control" id="name" name="name" required data-parsley-trigger="change">
               </div>
               <div class="mb-3">
-                <label for="dateOfBirth" class="form-label"><i class="fas fa-calendar"></i> Date of Birth</label>
+                <label for="dateOfBirth" class="form-label">{{t 'register.dateOfBirth'}}</label>
                 <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" required data-parsley-trigger="change">
               </div>
               <div class="mb-3">
-                <label for="nationality" class="form-label"><i class="fas fa-flag"></i> Nationality</label>
+                <label for="nationality" class="form-label">{{t 'register.nationality'}}</label>
                 <input type="text" class="form-control" id="nationality" name="nationality" required data-parsley-trigger="change">
               </div>
               <div class="mb-3">
-                <label for="gender" class="form-label"><i class="fas fa-venus-mars"></i> Gender</label>
-                <select class="form-control" id="gender" name="gender" required>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
+                <label for="gender" class="form-label">{{t 'register.gender'}}</label>
+                <select name="gender" class="form-control" required>
+                  <option value="Male">{{t 'register.genderMale'}}</option>
+                  <option value="Female">{{t 'register.genderFemale'}}</option>
+                  <option value="Other">{{t 'register.genderOther'}}</option>
                 </select>
               </div>
 
-              <!-- Foreign Resident Information -->
-              <h5>Foreign Resident Information</h5>
+              <!-- Accommodation Information -->
+              <h5>{{t 'register.accommodationInformation'}}</h5>
               <div class="mb-3">
-                <label for="passportNumber" class="form-label"><i class="fas fa-passport"></i> Passport Number</label>
-                <input type="text" class="form-control" id="passportNumber" name="passportNumber" required data-parsley-trigger="change">
+                <label for="accommodationName" class="form-label">{{t 'register.accommodationName'}}</label>
+                <input type="text" class="form-control" id="accommodationName" name="accommodationName" required>
               </div>
               <div class="mb-3">
-                <label for="visaType" class="form-label"><i class="fas fa-clipboard-list"></i> Visa Type</label>
-                <input type="text" class="form-control" id="visaType" name="visaType" required data-parsley-trigger="change">
+                <label for="accommodationType" class="form-label">{{t 'register.accommodationType'}}</label>
+                <input type="text" class="form-control" id="accommodationType" name="accommodationType" required>
               </div>
               <div class="mb-3">
-                <label for="visaExpiryDate" class="form-label"><i class="fas fa-calendar-alt"></i> Visa Expiry Date</label>
-                <input type="date" class="form-control" id="visaExpiryDate" name="visaExpiryDate" required data-parsley-trigger="change">
+                <label for="accommodationAddress" class="form-label">{{t 'register.accommodationAddress'}}</label>
+                <input type="text" class="form-control" id="accommodationAddress" name="accommodationAddress" required>
               </div>
               <div class="mb-3">
-                <label for="address" class="form-label"><i class="fas fa-home"></i> Address</label>
-                <input type="text" class="form-control" id="address" name="address" required data-parsley-trigger="change">
+                <label for="accommodationPhone" class="form-label">{{t 'register.accommodationPhone'}}</label>
+                <input type="text" class="form-control" id="accommodationPhone" name="accommodationPhone" required>
               </div>
 
-              <button type="submit" class="btn btn-primary w-100"><i class="fas fa-user-plus"></i> Register</button>
+              <button type="submit" class="btn btn-primary w-100"><i class="fas fa-user-plus"></i> {{t 'register.submitButton'}}</button>
             </form>
           </div>
           <div class="card-footer text-center">

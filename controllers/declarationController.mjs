@@ -72,15 +72,41 @@ export const renderDeclarationForm = async (req, res) => {
 
 export const getDeclarations = async (req, res) => {
   try {
-    const residences = await Residence.find()
-      .populate('foreignResident')
-      .populate('accommodation');
+    let residences;
+
+    if (req.user.role === 'admin' || req.user.role === 'manager') {
+      // Fetch all residences for admins and managers
+      residences = await Residence.find()
+        .populate({
+          path: 'declaration',
+          populate: { path: 'user', select: 'username' }
+        })
+        .populate('foreignResident')
+        .populate('accommodation');
+    } else {
+      // Fetch only the residences associated with the logged-in user
+      residences = await Residence.find()
+        .populate({
+          path: 'declaration',
+          match: { user: req.user._id },
+          populate: { path: 'user', select: 'username' }
+        })
+        .populate('foreignResident')
+        .populate('accommodation');
+    }
+
+    // Filter out residences without a matching declaration for regular users
+    if (req.user.role !== 'admin' && req.user.role !== 'manager') {
+      residences = residences.filter(residence => residence.declaration);
+    }
+
+    console.log('Fetched residences:', residences); // Debugging line
 
     // Render the view with the fetched residences
     res.render('declaration', { residences, user: req.user });
   } catch (error) {
-    logger.error('Error fetching residences:', error);
-    req.flash('error_msg', 'Error fetching residences');
+    logger.error('Error fetching declarations:', error);
+    req.flash('error_msg', 'Error fetching declarations');
     res.redirect('/declaration'); // Redirect to the declaration page on error
   }
 }; 
