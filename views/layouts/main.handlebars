@@ -96,7 +96,6 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-<<<<<<< HEAD
           <h5 class="modal-title" id="profileModalLabel">Profile</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -146,51 +145,6 @@
               <input type="password" name="confirmNewPassword" class="form-control" required>
             </div>
             <button type="submit" class="btn btn-primary">Change Password</button>
-=======
-          <h5 class="modal-title" id="profileModalLabel">Thông Tin Cá Nhân</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form id="profileForm">
-            <input type="hidden" name="_csrf" value="{{csrfToken}}">
-            <!-- Personal Information -->
-            <div class="mb-3">
-              <label for="phone" class="form-label">Số Điện Thoại</label>
-              <input type="text" class="form-control" id="phone" name="phone" value="{{user.phone}}" required>
-            </div>
-            <div class="mb-3">
-              <label for="name" class="form-label">Họ Và Tên</label>
-              <input type="text" class="form-control" id="name" name="name" value="{{user.name}}" required>
-            </div>
-            <div class="mb-3">
-              <label for="dateOfBirth" class="form-label">Ngày Sinh</label>
-              <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" value="{{user.dateOfBirth}}" required>
-            </div>
-            <div class="mb-3">
-              <label for="nationality" class="form-label">Quốc Tịch</label>
-              <input type="text" class="form-control" id="nationality" name="nationality" value="{{user.nationality}}" required>
-            </div>
-
-            <!-- Change Password -->
-            <h5>Đổi Mật Khẩu</h5>
-            <div class="mb-3">
-              <label for="currentPassword" class="form-label">Mật Khẩu Hiện Tại</label>
-              <input type="password" class="form-control" id="currentPassword" name="currentPassword">
-            </div>
-            <div class="mb-3">
-              <label for="newPassword" class="form-label">Mật Khẩu Mới</label>
-              <input type="password" class="form-control" id="newPassword" name="newPassword">
-            </div>
-            <div class="mb-3">
-              <label for="confirmNewPassword" class="form-label">Xác Nhận Mật Khẩu Mới</label>
-              <input type="password" class="form-control" id="confirmNewPassword" name="confirmNewPassword">
-            </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-              <button type="submit" class="btn btn-primary">Cập Nhật Thông Tin</button>
-            </div>
->>>>>>> 34fa14477f11ef278aac5d217f85d8331503f2ef
           </form>
         </div>
       </div>
