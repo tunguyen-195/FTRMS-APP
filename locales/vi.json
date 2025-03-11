@@ -109,7 +109,20 @@
     "address": "Địa chỉ",
     "submit": "Đăng ký",
     "alreadyHaveAccount": "Đã có tài khoản?",
-    "loginHere": "Đăng nhập tại đây"
+    "loginHere": "Đăng nhập tại đây",
+    "userInformation": "Thông Tin Người Dùng",
+    "fullName": "Họ Và Tên",
+    "dateOfBirth": "Ngày Sinh",
+    "gender": "Giới Tính",
+    "genderMale": "Nam",
+    "genderFemale": "Nữ",
+    "genderOther": "Khác",
+    "accommodationInformation": "Thông Tin Cơ Sở Tạm Trú",
+    "accommodationName": "Tên Cơ Sở",
+    "accommodationType": "Loại Cơ Sở",
+    "accommodationAddress": "Địa Chỉ Cơ Sở",
+    "accommodationPhone": "Số Điện Thoại Cơ Sở",
+    "submitButton": "Đăng Ký"
   },
   "residences": {
     "title": "Quản lý cư trú",

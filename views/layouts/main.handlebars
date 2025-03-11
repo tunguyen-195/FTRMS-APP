@@ -96,29 +96,50 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="profileModalLabel">Thông Tin Người Dùng</h5>
+          <h5 class="modal-title" id="profileModalLabel">Thông Tin Cá Nhân</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <ul id="profileInfo">
-            <li><strong>Tên đăng nhập:</strong> {{user.username}}</li>
-            <li><strong>Email:</strong> {{user.email}}</li>
-            <li><strong>Số điện thoại:</strong> {{user.phone}}</li>
-            <li><strong>Tên:</strong> {{user.name}}</li>
-            <li><strong>Ngày sinh:</strong> {{formatDate user.dateOfBirth}}</li>
-            <li><strong>Quốc tịch:</strong> {{user.nationality}}</li>
-            <li><strong>Giới tính:</strong> {{user.gender}}</li>
-            {{#if user.foreignResident}}
-              <li><strong>Số hộ chiếu:</strong> {{user.foreignResident.passportNumber}}</li>
-              <li><strong>Loại visa:</strong> {{user.foreignResident.visaType}}</li>
-              <li><strong>Ngày hết hạn visa:</strong> {{formatDate user.foreignResident.visaExpiryDate}}</li>
-              <li><strong>Địa chỉ:</strong> {{user.foreignResident.address}}</li>
-            {{/if}}
-          </ul>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Chỉnh sửa</button>
+          <form id="profileForm">
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <!-- Personal Information -->
+            <div class="mb-3">
+              <label for="phone" class="form-label">Số Điện Thoại</label>
+              <input type="text" class="form-control" id="phone" name="phone" value="{{user.phone}}" required>
+            </div>
+            <div class="mb-3">
+              <label for="name" class="form-label">Họ Và Tên</label>
+              <input type="text" class="form-control" id="name" name="name" value="{{user.name}}" required>
+            </div>
+            <div class="mb-3">
+              <label for="dateOfBirth" class="form-label">Ngày Sinh</label>
+              <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" value="{{user.dateOfBirth}}" required>
+            </div>
+            <div class="mb-3">
+              <label for="nationality" class="form-label">Quốc Tịch</label>
+              <input type="text" class="form-control" id="nationality" name="nationality" value="{{user.nationality}}" required>
+            </div>
+
+            <!-- Change Password -->
+            <h5>Đổi Mật Khẩu</h5>
+            <div class="mb-3">
+              <label for="currentPassword" class="form-label">Mật Khẩu Hiện Tại</label>
+              <input type="password" class="form-control" id="currentPassword" name="currentPassword">
+            </div>
+            <div class="mb-3">
+              <label for="newPassword" class="form-label">Mật Khẩu Mới</label>
+              <input type="password" class="form-control" id="newPassword" name="newPassword">
+            </div>
+            <div class="mb-3">
+              <label for="confirmNewPassword" class="form-label">Xác Nhận Mật Khẩu Mới</label>
+              <input type="password" class="form-control" id="confirmNewPassword" name="confirmNewPassword">
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+              <button type="submit" class="btn btn-primary">Cập Nhật Thông Tin</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

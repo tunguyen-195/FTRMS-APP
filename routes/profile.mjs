@@ -2,32 +2,12 @@ import express from 'express';
 import User from '../models/User.mjs';
 import ForeignResident from '../models/ForeignResident.mjs';
 import { ensureAuthenticated } from '../middleware/auth.mjs';
+import { updateProfile } from '../controllers/profileController.mjs';
 
 const router = express.Router();
 
 // Route to handle form submission for updating user information
-router.post('/update', ensureAuthenticated, async (req, res) => {
-  try {
-    const userId = req.user._id;
-    const { passportNumber, visaType, visaExpiryDate, address } = req.body;
-
-    // Update the ForeignResident information in the database
-    const updatedResident = await ForeignResident.findOneAndUpdate(
-      { user: userId },
-      { passportNumber, visaType, visaExpiryDate, address },
-      { new: true, upsert: true } // Create if not exists
-    );
-
-    if (updatedResident) {
-      res.json({ success: true, user: updatedResident });
-    } else {
-      res.json({ success: false, message: 'Không tìm thấy thông tin người dùng.' });
-    }
-  } catch (err) {
-    console.error('Error updating user details:', err);
-    res.json({ success: false, message: 'Có lỗi xảy ra khi cập nhật thông tin' });
-  }
-});
+router.post('/update', ensureAuthenticated, updateProfile);
 
 router.post('/update-profile', ensureAuthenticated, async (req, res) => {
   try {

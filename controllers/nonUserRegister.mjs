@@ -1,58 +1,54 @@
 import bcrypt from 'bcryptjs';
 import User from '../models/User.mjs';
-import ForeignResident from '../models/ForeignResident.mjs';
 import Accommodation from '../models/Accommodation.mjs';
 
 export const registerUser = async (req, res) => {
-  const { username, email, phone, password, confirmPassword, name, dateOfBirth, nationality, gender, passportNumber, visaType, visaExpiryDate, address } = req.body;
+  const {
+    username, email, phone, password, confirmPassword, name, dateOfBirth, nationality, gender,
+    accommodationName, accommodationType, accommodationAddress, accommodationPhone
+  } = req.body;
 
   if (password !== confirmPassword) {
-    req.flash('error_msg', 'Passwords do not match');
+    req.flash('error_msg', 'Mật khẩu không khớp');
     return res.redirect('/register');
   }
 
   try {
     let user = await User.findOne({ email });
     if (user) {
-      req.flash('error_msg', 'Email is already registered');
+      req.flash('error_msg', 'Email đã được đăng ký');
       return res.redirect('/register');
     }
 
-    // Find or assign an accommodation for the user
-    const accommodation = await Accommodation.findOne(); // Modify this logic to select the appropriate accommodation
-    if (!accommodation) {
-      req.flash('error_msg', 'No accommodation available');
-      return res.redirect('/register');
-    }
-
+    const hashedPassword = await bcrypt.hash(password, 10);
     user = new User({
       username,
       email,
       phone,
-      password: await bcrypt.hash(password, 10),
+      password: hashedPassword,
       name,
       dateOfBirth,
       nationality,
       gender,
-      accommodation: accommodation._id, // Associate user with accommodation
     });
 
     await user.save();
 
-    const foreignResident = new ForeignResident({
-      passportNumber,
-      visaType,
-      visaExpiryDate,
-      address,
-      user: user._id,
+    const accommodation = new Accommodation({
+      name: accommodationName,
+      type: accommodationType,
+      address: accommodationAddress,
+      phone: accommodationPhone,
+      representative: user._id, // Link the accommodation to the user
     });
 
-    await foreignResident.save();
+    await accommodation.save();
 
-    req.flash('success_msg', 'You are now registered and can log in');
+    req.flash('success_msg', 'Bạn đã đăng ký thành công và có thể đăng nhập');
     res.redirect('/auth/login');
   } catch (err) {
-    req.flash('error_msg', 'An error occurred during registration');
+    console.error('Error during registration:', err);
+    req.flash('error_msg', 'Đã xảy ra lỗi trong quá trình đăng ký');
     res.redirect('/register');
   }
 };

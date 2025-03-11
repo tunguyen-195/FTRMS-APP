@@ -179,4 +179,19 @@
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   {{/if}}
-</div>
+
+  {{!-- {{#if residences.length}}
+    {{#each residences}}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{this.foreignResident.fullName}}</h5>
+          <p class="card-text">{{t 'declaration.checkIn'}}: {{formatDate this.check_in}}</p>
+          <p class="card-text">{{t 'declaration.checkOut'}}: {{formatDate this.check_out}}</p>
+          <p class="card-text">{{t 'declaration.status'}}: {{this.status}}</p>
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    <p>{{t 'declaration.noRecords'}}</p>
+  {{/if}}
+</div> --}}
